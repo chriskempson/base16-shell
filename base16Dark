@@ -1,0 +1,52 @@
+#define b_color00 #151515
+#define b_color01 #ac4142
+#define b_color02 #90a959
+#define b_color03 #f4bf75
+#define b_color04 #6a9fb5
+#define b_color05 #aa759f
+#define b_color06 #75b5aa
+#define b_color07 #d0d0d0
+#define b_color08 #505050
+#define b_color09 #ac4142
+#define b_color10 #90a959
+#define b_color11 #f4bf75
+#define b_color12 #6a9fb5
+#define b_color13 #aa759f
+#define b_color14 #75b5aa
+#define b_color15 #f5f5f5
+
+*.foreground:   b_color07
+*.background:   b_color00
+*.cursorColor:  b_color02
+
+! Black
+*.color0:       b_color00
+*.color8:       b_color08
+
+! Red
+*.color1:       b_color01
+*.color9:       b_color09
+
+! Green
+*.color2:       b_color02
+*.color10:      b_color10
+
+! Yellow
+*.color3:       b_color03
+*.color11:      b_color11
+
+! Blue
+*.color4:       b_color04
+*.color12:      b_color12
+
+! Magenta
+*.color5:       b_color05
+*.color13:      b_color13
+
+! Cyan
+*.color6:       b_color06
+*.color14:      b_color14
+
+! White
+*.color7:       b_color07
+*.color15:      b_color15
