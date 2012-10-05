@@ -3,7 +3,7 @@
 # Chris Kempson (http://chriskempson.com)
 
 color00="2B303B" # Base 00 - Black
-color01="CB716E" # Base 08 - Red
+color01="BF616A" # Base 08 - Red
 color02="A3BE8C" # Base 0B - Green
 color03="EBCB8B" # Base 0A - Yellow
 color04="8FA1B3" # Base 0D - Blue
