@@ -2,28 +2,28 @@
 # Base16 Ocean - Console color setup script
 # Chris Kempson (http://chriskempson.com)
 
-color00="2B303B" # Base 00 - Black
-color01="BF616A" # Base 08 - Red
-color02="A3BE8C" # Base 0B - Green
-color03="EBCB8B" # Base 0A - Yellow
-color04="8FA1B3" # Base 0D - Blue
-color05="B48EAD" # Base 0E - Magenta
-color06="96B5B4" # Base 0C - Cyan
-color07="C0C5CE" # Base 05 - White
-color08="65737E" # Base 03 - Bright Black
+color00="2b303b" # Base 00 - Black
+color01="bf616a" # Base 08 - Red
+color02="a3be8c" # Base 0B - Green
+color03="ebcb8b" # Base 0A - Yellow
+color04="8fa1b3" # Base 0D - Blue
+color05="b48ead" # Base 0E - Magenta
+color06="96b5b4" # Base 0C - Cyan
+color07="c0c5ce" # Base 05 - White
+color08="65737e" # Base 03 - Bright Black
 color09=$color01 # Base 08 - Bright Red
 color10=$color02 # Base 0B - Bright Green
 color11=$color03 # Base 0A - Bright Yellow
 color12=$color04 # Base 0D - Bright Blue
 color13=$color05 # Base 0E - Bright Magenta
 color14=$color06 # Base 0C - Bright Cyan
-color15="EFF1F5" # Base 07 - Bright White
-color16="D0/87/70" # Base 09
-color17="AB/79/67" # Base 0F
-color18="34/3D/46" # Base 01
-color19="4F/5B/66" # Base 02
-color20="A7/AD/BA" # Base 04
-color21="DF/E1/E8" # Base 06
+color15="eff1f5" # Base 07 - Bright White
+color16="d0/87/70" # Base 09
+color17="ab/79/67" # Base 0F
+color18="34/3d/46" # Base 01
+color19="4f/5b/66" # Base 02
+color20="a7/ad/ba" # Base 04
+color21="df/e1/e8" # Base 06
 
 # Bright colors that are actually bright!
 # color09="ffa4ac" # Base XX - Bright Red
