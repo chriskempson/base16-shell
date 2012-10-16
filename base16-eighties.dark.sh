@@ -52,9 +52,11 @@ printf "\e]PE$color14\e\\"
 printf "\e]PF$color15\e\\"
 
 # 256 color space
-printf "\e]4;16;rgb:$color16\e\\"
-printf "\e]4;17;rgb:$color17\e\\"
-printf "\e]4;18;rgb:$color18\e\\"
-printf "\e]4;19;rgb:$color19\e\\"
-printf "\e]4;20;rgb:$color20\e\\"
-printf "\e]4;21;rgb:$color21\e\\"
+if [ "$TERM" != linux ]; then
+  printf "\e]4;16;rgb:$color16\e\\"
+  printf "\e]4;17;rgb:$color17\e\\"
+  printf "\e]4;18;rgb:$color18\e\\"
+  printf "\e]4;19;rgb:$color19\e\\"
+  printf "\e]4;20;rgb:$color20\e\\"
+  printf "\e]4;21;rgb:$color21\e\\"
+fi
