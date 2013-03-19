@@ -2,22 +2,22 @@
 # Base16 Chalk - Console color setup script
 # Chris Kempson (http://chriskempson.com)
 
-color00="151515" # Base 00 - Black
-color01="fb9fb1" # Base 08 - Red
-color02="acc267" # Base 0B - Green
-color03="ddb26f" # Base 0A - Yellow
-color04="6fc2ef" # Base 0D - Blue
-color05="e1a3ee" # Base 0E - Magenta
-color06="12cfc0" # Base 0C - Cyan
-color07="d0d0d0" # Base 05 - White
-color08="505050" # Base 03 - Bright Black
+color00="15/15/15" # Base 00 - Black
+color01="fb/9f/b1" # Base 08 - Red
+color02="ac/c2/67" # Base 0B - Green
+color03="dd/b2/6f" # Base 0A - Yellow
+color04="6f/c2/ef" # Base 0D - Blue
+color05="e1/a3/ee" # Base 0E - Magenta
+color06="12/cf/c0" # Base 0C - Cyan
+color07="d0/d0/d0" # Base 05 - White
+color08="50/50/50" # Base 03 - Bright Black
 color09=$color01 # Base 08 - Bright Red
 color10=$color02 # Base 0B - Bright Green
 color11=$color03 # Base 0A - Bright Yellow
 color12=$color04 # Base 0D - Bright Blue
 color13=$color05 # Base 0E - Bright Magenta
 color14=$color06 # Base 0C - Bright Cyan
-color15="f5f5f5" # Base 07 - Bright White
+color15="f5/f5/f5" # Base 07 - Bright White
 color16="ed/a9/87" # Base 09
 color17="de/af/8f" # Base 0F
 color18="20/20/20" # Base 01
@@ -25,31 +25,24 @@ color19="30/30/30" # Base 02
 color20="b0/b0/b0" # Base 04
 color21="e0/e0/e0" # Base 06
 
-# Bright colors that are actually bright!
-# color09="ffa4ac" # Base XX - Bright Red
-# color10="c6e9a5" # Base XX - Bright Green
-# color11="ffdabf" # Base XX - Bright Yellow
-# color12="b1ecf7" # Base XX - Bright Blue
-# color13="ffd4f4" # Base XX - Bright Magenta
-# color14="bbffef" # Base XX - Bright Cyan
-
 # 16 color space
-printf "\e]P0$color00\e\\"
-printf "\e]P1$color01\e\\"
-printf "\e]P2$color02\e\\"
-printf "\e]P3$color03\e\\"
-printf "\e]P4$color04\e\\"
-printf "\e]P5$color05\e\\"
-printf "\e]P6$color06\e\\"
-printf "\e]P7$color07\e\\"
-printf "\e]P8$color08\e\\"
-printf "\e]P9$color09\e\\"
-printf "\e]PA$color10\e\\"
-printf "\e]PB$color11\e\\"
-printf "\e]PC$color12\e\\"
-printf "\e]PD$color13\e\\"
-printf "\e]PE$color14\e\\"
-printf "\e]PF$color15\e\\"
+printf "\e]4;0;rgb:$color00\e\\"
+printf "\e]4;1;rgb:$color01\e\\"
+printf "\e]4;2;rgb:$color02\e\\"
+printf "\e]4;3;rgb:$color03\e\\"
+printf "\e]4;4;rgb:$color04\e\\"
+printf "\e]4;5;rgb:$color05\e\\"
+printf "\e]4;6;rgb:$color06\e\\"
+printf "\e]4;7;rgb:$color07\e\\"
+printf "\e]4;8;rgb:$color08\e\\"
+printf "\e]4;9;rgb:$color09\e\\"
+printf "\e]4;10;rgb:$color10\e\\"
+printf "\e]4;11;rgb:$color11\e\\"
+printf "\e]4;12;rgb:$color12\e\\"
+printf "\e]4;13;rgb:$color13\e\\"
+printf "\e]4;14;rgb:$color14\e\\"
+printf "\e]4;15;rgb:$color15\e\\"
+
 
 # 256 color space
 if [ "$TERM" != linux ]; then
