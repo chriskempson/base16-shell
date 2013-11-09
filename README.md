@@ -1,5 +1,5 @@
 # Base16 Shell
-Changes your shell's first 21 colors via escape sequences. Make sure this script is run each time you open a new shell!
+A shell script to change your terminal's default ANSI colors and colors 17 to 21 of your shell's 256 colorspace (if supported).
 
 ![Base16 Shell](https://raw.github.com/chriskempson/base16-shell/master/base16-shell.png)
 
