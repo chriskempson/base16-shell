@@ -1,29 +1,29 @@
 #!/bin/sh
-# Base16 Railscasts - Console color setup script
-# Ryan Bates (http://railscasts.com)
+# Base16 Atelier Seaside - Console color setup script
+# Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/seaside/)
 
-color00="2b/2b/2b" # Base 00 - Black
-color01="da/49/39" # Base 08 - Red
-color02="a5/c2/61" # Base 0B - Green
-color03="ff/c6/6d" # Base 0A - Yellow
-color04="6d/9c/be" # Base 0D - Blue
-color05="b6/b3/eb" # Base 0E - Magenta
-color06="51/9f/50" # Base 0C - Cyan
-color07="e6/e1/dc" # Base 05 - White
-color08="5a/64/7e" # Base 03 - Bright Black
+color00="13/15/13" # Base 00 - Black
+color01="e6/19/3c" # Base 08 - Red
+color02="29/a3/29" # Base 0B - Green
+color03="c3/c3/22" # Base 0A - Yellow
+color04="3d/62/f5" # Base 0D - Blue
+color05="ad/2b/ee" # Base 0E - Magenta
+color06="19/99/b3" # Base 0C - Cyan
+color07="8c/a6/8c" # Base 05 - White
+color08="68/7d/68" # Base 03 - Bright Black
 color09=$color01 # Base 08 - Bright Red
 color10=$color02 # Base 0B - Bright Green
 color11=$color03 # Base 0A - Bright Yellow
 color12=$color04 # Base 0D - Bright Blue
 color13=$color05 # Base 0E - Bright Magenta
 color14=$color06 # Base 0C - Bright Cyan
-color15="f9/f7/f3" # Base 07 - Bright White
-color16="cc/78/33" # Base 09
-color17="bc/94/58" # Base 0F
-color18="27/29/35" # Base 01
-color19="3a/40/55" # Base 02
-color20="d4/cf/c9" # Base 04
-color21="f4/f1/ed" # Base 06
+color15="f0/ff/f0" # Base 07 - Bright White
+color16="87/71/1d" # Base 09
+color17="e6/19/c3" # Base 0F
+color18="24/29/24" # Base 01
+color19="5e/6e/5e" # Base 02
+color20="80/99/80" # Base 04
+color21="cf/e8/cf" # Base 06
 
 if [ -n "$TMUX" ]; then
   # tell tmux to pass the escape sequences through

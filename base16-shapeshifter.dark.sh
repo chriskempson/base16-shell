@@ -1,29 +1,29 @@
 #!/bin/sh
-# Base16 Railscasts - Console color setup script
-# Ryan Bates (http://railscasts.com)
+# Base16 shapeshifter - Console color setup script
+# Tyler Benziger (http://tybenz.com)
 
-color00="2b/2b/2b" # Base 00 - Black
-color01="da/49/39" # Base 08 - Red
-color02="a5/c2/61" # Base 0B - Green
-color03="ff/c6/6d" # Base 0A - Yellow
-color04="6d/9c/be" # Base 0D - Blue
-color05="b6/b3/eb" # Base 0E - Magenta
-color06="51/9f/50" # Base 0C - Cyan
-color07="e6/e1/dc" # Base 05 - White
-color08="5a/64/7e" # Base 03 - Bright Black
+color00="00/00/00" # Base 00 - Black
+color01="e9/2f/2f" # Base 08 - Red
+color02="0e/d8/39" # Base 0B - Green
+color03="dd/dd/13" # Base 0A - Yellow
+color04="3b/48/e3" # Base 0D - Blue
+color05="f9/96/e2" # Base 0E - Magenta
+color06="23/ed/da" # Base 0C - Cyan
+color07="ab/ab/ab" # Base 05 - White
+color08="34/34/34" # Base 03 - Bright Black
 color09=$color01 # Base 08 - Bright Red
 color10=$color02 # Base 0B - Bright Green
 color11=$color03 # Base 0A - Bright Yellow
 color12=$color04 # Base 0D - Bright Blue
 color13=$color05 # Base 0E - Bright Magenta
 color14=$color06 # Base 0C - Bright Cyan
-color15="f9/f7/f3" # Base 07 - Bright White
-color16="cc/78/33" # Base 09
-color17="bc/94/58" # Base 0F
-color18="27/29/35" # Base 01
-color19="3a/40/55" # Base 02
-color20="d4/cf/c9" # Base 04
-color21="f4/f1/ed" # Base 06
+color15="f9/f9/f9" # Base 07 - Bright White
+color16="e0/94/48" # Base 09
+color17="69/54/2d" # Base 0F
+color18="04/04/04" # Base 01
+color19="10/20/15" # Base 02
+color20="55/55/55" # Base 04
+color21="e0/e0/e0" # Base 06
 
 if [ -n "$TMUX" ]; then
   # tell tmux to pass the escape sequences through
