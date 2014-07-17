@@ -1,37 +1,37 @@
 #!/bin/sh
-# Base16 Flat - Shell color setup script
-# Chris Kempson (http://chriskempson.com)
+# Base16 Marrakesh - Shell color setup script
+# Alexandre Gavioli (http://github.com/Alexx2/)
 
 if [ "${TERM%%-*}" = 'linux' ]; then
     # This script doesn't support linux console (use 'vconsole' template instead)
     return 2>/dev/null || exit 0
 fi
 
-color00="2C/3E/50" # Base 00 - Black
-color01="E7/4C/3C" # Base 08 - Red
-color02="2E/CC/71" # Base 0B - Green
-color03="F1/C4/0F" # Base 0A - Yellow
-color04="34/98/DB" # Base 0D - Blue
-color05="9B/59/B6" # Base 0E - Magenta
-color06="1A/BC/9C" # Base 0C - Cyan
-color07="e0/e0/e0" # Base 05 - White
-color08="95/A5/A6" # Base 03 - Bright Black
+color00="20/16/02" # Base 00 - Black
+color01="c3/53/59" # Base 08 - Red
+color02="18/97/4e" # Base 0B - Green
+color03="a8/83/39" # Base 0A - Yellow
+color04="47/7c/a1" # Base 0D - Blue
+color05="88/68/b3" # Base 0E - Magenta
+color06="75/a7/38" # Base 0C - Cyan
+color07="94/8e/48" # Base 05 - White
+color08="6c/68/23" # Base 03 - Bright Black
 color09=$color01 # Base 08 - Bright Red
 color10=$color02 # Base 0B - Bright Green
 color11=$color03 # Base 0A - Bright Yellow
 color12=$color04 # Base 0D - Bright Blue
 color13=$color05 # Base 0E - Bright Magenta
 color14=$color06 # Base 0C - Bright Cyan
-color15="EC/F0/F1" # Base 07 - Bright White
-color16="E6/7E/22" # Base 09
-color17="be/64/3c" # Base 0F
-color18="34/49/5E" # Base 01
-color19="7F/8C/8D" # Base 02
-color20="BD/C3/C7" # Base 04
-color21="f5/f5/f5" # Base 06
-color_foreground="e0/e0/e0" # Base 05
-color_background="2C/3E/50" # Base 00
-color_cursor="e0/e0/e0" # Base 05
+color15="fa/f0/a5" # Base 07 - Bright White
+color16="b3/61/44" # Base 09
+color17="b3/58/8e" # Base 0F
+color18="30/2e/00" # Base 01
+color19="5f/5b/17" # Base 02
+color20="86/81/3b" # Base 04
+color21="cc/c3/7a" # Base 06
+color_foreground="5f/5b/17" # Base 02
+color_background="fa/f0/a5" # Base 07
+color_cursor="5f/5b/17" # Base 02
 
 if [ -n "$TMUX" ]; then
   # tell tmux to pass the escape sequences through

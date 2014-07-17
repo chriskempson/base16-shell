@@ -1,37 +1,37 @@
 #!/bin/sh
-# Base16 Flat - Shell color setup script
-# Chris Kempson (http://chriskempson.com)
+# Base16 Embers - Shell color setup script
+# Jannik Siebert (https://github.com/janniks)
 
 if [ "${TERM%%-*}" = 'linux' ]; then
     # This script doesn't support linux console (use 'vconsole' template instead)
     return 2>/dev/null || exit 0
 fi
 
-color00="2C/3E/50" # Base 00 - Black
-color01="E7/4C/3C" # Base 08 - Red
-color02="2E/CC/71" # Base 0B - Green
-color03="F1/C4/0F" # Base 0A - Yellow
-color04="34/98/DB" # Base 0D - Blue
-color05="9B/59/B6" # Base 0E - Magenta
-color06="1A/BC/9C" # Base 0C - Cyan
-color07="e0/e0/e0" # Base 05 - White
-color08="95/A5/A6" # Base 03 - Bright Black
+color00="16/13/0F" # Base 00 - Black
+color01="82/6D/57" # Base 08 - Red
+color02="57/82/6D" # Base 0B - Green
+color03="6D/82/57" # Base 0A - Yellow
+color04="6D/57/82" # Base 0D - Blue
+color05="82/57/6D" # Base 0E - Magenta
+color06="57/6D/82" # Base 0C - Cyan
+color07="A3/9A/90" # Base 05 - White
+color08="5A/50/47" # Base 03 - Bright Black
 color09=$color01 # Base 08 - Bright Red
 color10=$color02 # Base 0B - Bright Green
 color11=$color03 # Base 0A - Bright Yellow
 color12=$color04 # Base 0D - Bright Blue
 color13=$color05 # Base 0E - Bright Magenta
 color14=$color06 # Base 0C - Bright Cyan
-color15="EC/F0/F1" # Base 07 - Bright White
-color16="E6/7E/22" # Base 09
-color17="be/64/3c" # Base 0F
-color18="34/49/5E" # Base 01
-color19="7F/8C/8D" # Base 02
-color20="BD/C3/C7" # Base 04
-color21="f5/f5/f5" # Base 06
-color_foreground="e0/e0/e0" # Base 05
-color_background="2C/3E/50" # Base 00
-color_cursor="e0/e0/e0" # Base 05
+color15="DB/D6/D1" # Base 07 - Bright White
+color16="82/82/57" # Base 09
+color17="82/57/57" # Base 0F
+color18="2C/26/20" # Base 01
+color19="43/3B/32" # Base 02
+color20="8A/80/75" # Base 04
+color21="BE/B6/AE" # Base 06
+color_foreground="A3/9A/90" # Base 05
+color_background="16/13/0F" # Base 00
+color_cursor="A3/9A/90" # Base 05
 
 if [ -n "$TMUX" ]; then
   # tell tmux to pass the escape sequences through

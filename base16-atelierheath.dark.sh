@@ -1,6 +1,11 @@
 #!/bin/sh
-# Base16 Atelier Heath - Console color setup script
+# Base16 Atelier Heath - Shell color setup script
 # Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/heath)
+
+if [ "${TERM%%-*}" = 'linux' ]; then
+    # This script doesn't support linux console (use 'vconsole' template instead)
+    return 2>/dev/null || exit 0
+fi
 
 color00="1b/18/1b" # Base 00 - Black
 color01="ca/40/2b" # Base 08 - Red
@@ -24,16 +29,22 @@ color18="29/23/29" # Base 01
 color19="69/5d/69" # Base 02
 color20="9e/8f/9e" # Base 04
 color21="d8/ca/d8" # Base 06
+color_foreground="ab/9b/ab" # Base 05
+color_background="1b/18/1b" # Base 00
+color_cursor="ab/9b/ab" # Base 05
 
 if [ -n "$TMUX" ]; then
   # tell tmux to pass the escape sequences through
   # (Source: http://permalink.gmane.org/gmane.comp.terminal-emulators.tmux.user/1324)
   printf_template="\033Ptmux;\033\033]4;%d;rgb:%s\007\033\\"
+  printf_template_var="\033Ptmux;\033\033]%d;rgb:%s\007\033\\"
 elif [ "${TERM%%-*}" = "screen" ]; then
   # GNU screen (screen, screen-256color, screen-256color-bce)
   printf_template="\033P\033]4;%d;rgb:%s\007\033\\"
+  printf_template_var="\033P\033]%d;rgb:%s\007\033\\"
 else
   printf_template="\033]4;%d;rgb:%s\033\\"
+  printf_template_var="\033]%d;rgb:%s\033\\"
 fi
 
 # 16 color space
@@ -55,17 +66,21 @@ printf $printf_template 14 $color14
 printf $printf_template 15 $color15
 
 # 256 color space
-if [ "$TERM" != linux ]; then
-  printf $printf_template 16 $color16
-  printf $printf_template 17 $color17
-  printf $printf_template 18 $color18
-  printf $printf_template 19 $color19
-  printf $printf_template 20 $color20
-  printf $printf_template 21 $color21
-fi
+printf $printf_template 16 $color16
+printf $printf_template 17 $color17
+printf $printf_template 18 $color18
+printf $printf_template 19 $color19
+printf $printf_template 20 $color20
+printf $printf_template 21 $color21
+
+# foreground / background / cursor color
+printf $printf_template_var 10 $color_foreground
+printf $printf_template_var 11 $color_background
+printf $printf_template_var 12 $color_cursor
 
 # clean up
 unset printf_template
+unset printf_template_var
 unset color00
 unset color01
 unset color02
@@ -88,3 +103,6 @@ unset color18
 unset color19
 unset color20
 unset color21
+unset color_foreground
+unset color_background
+unset color_cursor

@@ -1,37 +1,37 @@
 #!/bin/sh
-# Base16 Flat - Shell color setup script
-# Chris Kempson (http://chriskempson.com)
+# Base16 Bespin - Shell color setup script
+# Jan T. Sott
 
 if [ "${TERM%%-*}" = 'linux' ]; then
     # This script doesn't support linux console (use 'vconsole' template instead)
     return 2>/dev/null || exit 0
 fi
 
-color00="2C/3E/50" # Base 00 - Black
-color01="E7/4C/3C" # Base 08 - Red
-color02="2E/CC/71" # Base 0B - Green
-color03="F1/C4/0F" # Base 0A - Yellow
-color04="34/98/DB" # Base 0D - Blue
-color05="9B/59/B6" # Base 0E - Magenta
-color06="1A/BC/9C" # Base 0C - Cyan
-color07="e0/e0/e0" # Base 05 - White
-color08="95/A5/A6" # Base 03 - Bright Black
+color00="28/21/1c" # Base 00 - Black
+color01="cf/6a/4c" # Base 08 - Red
+color02="54/be/0d" # Base 0B - Green
+color03="f9/ee/98" # Base 0A - Yellow
+color04="5e/a6/ea" # Base 0D - Blue
+color05="9b/85/9d" # Base 0E - Magenta
+color06="af/c4/db" # Base 0C - Cyan
+color07="8a/89/86" # Base 05 - White
+color08="66/66/66" # Base 03 - Bright Black
 color09=$color01 # Base 08 - Bright Red
 color10=$color02 # Base 0B - Bright Green
 color11=$color03 # Base 0A - Bright Yellow
 color12=$color04 # Base 0D - Bright Blue
 color13=$color05 # Base 0E - Bright Magenta
 color14=$color06 # Base 0C - Bright Cyan
-color15="EC/F0/F1" # Base 07 - Bright White
-color16="E6/7E/22" # Base 09
-color17="be/64/3c" # Base 0F
-color18="34/49/5E" # Base 01
-color19="7F/8C/8D" # Base 02
-color20="BD/C3/C7" # Base 04
-color21="f5/f5/f5" # Base 06
-color_foreground="e0/e0/e0" # Base 05
-color_background="2C/3E/50" # Base 00
-color_cursor="e0/e0/e0" # Base 05
+color15="ba/ae/9e" # Base 07 - Bright White
+color16="cf/7d/34" # Base 09
+color17="93/71/21" # Base 0F
+color18="36/31/2e" # Base 01
+color19="5e/5d/5c" # Base 02
+color20="79/79/77" # Base 04
+color21="9d/9b/97" # Base 06
+color_foreground="5e/5d/5c" # Base 02
+color_background="ba/ae/9e" # Base 07
+color_cursor="5e/5d/5c" # Base 02
 
 if [ -n "$TMUX" ]; then
   # tell tmux to pass the escape sequences through
