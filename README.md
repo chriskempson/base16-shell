@@ -5,7 +5,7 @@ A shell script to change your terminal's default ANSI colors and colors 17 to 21
 
 ## Installation
 
-    git clone git@github.com:chriskempson/base16-shell.git ~/.config/base16-shell
+    git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 
 ## Shells
 
