@@ -15,20 +15,19 @@ A shell script to change your shell's default ANSI colors but most importantly, 
 ## Shells
 
 ### ZSH
+In `~/.zshrc` place the following lines:
 
     # Base16 Shell
-    BASE16_SCHEME="default"
-    BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
+    BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
     [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
 
 ### Fish
-In `config.fish` have the following line:
+In `config.fish` place the following lines:
 
     # Base16 Shell
-    eval sh $HOME/.base16-default.dark.sh
+    eval sh $HOME/.config/base16-shell/base16-default.dark.sh
 
 ## Troubleshooting
 Run the included `colortest` script and check that your colour assignments appear correct. If your teminal does not support the setting of colours in within the 256 colorspace (e.g. Apple Terminal), colours 16 to 21 will appear blue.
-
 
 ![256 colorspace bad example](https://raw.github.com/chriskempson/base16-shell/master/256-colorspace-bad-example.png)
