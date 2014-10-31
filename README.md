@@ -1,5 +1,10 @@
 # Base16 Shell
-A shell script to change your terminal's default ANSI colors and colors 17 to 21 of your shell's 256 colorspace (if supported).
+A shell script to change your shell's default ANSI colors but most importantly, colors 17 to 21 of your shell's 256 colorspace (if supported).
+
+## Use Cases
+* You want to use a `*.256.*` varient of a Termainal theme designed to honor the original bright colors.
+* You prefer to use a script instead of a terminal emulator theme to color your shell.
+* You use this script to have different colorschemes appear on different SSH sessions.
 
 ![Base16 Shell](https://raw.github.com/chriskempson/base16-shell/master/base16-shell.png)
 
