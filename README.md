@@ -1,5 +1,5 @@
 # Base16 Shell
-A shell script to change your shell's default ANSI colors but most importantly, colors 17 to 21 of your shell's 256 colorspace (if supported). This script makes it possible honor the original bright colors of your shell (e.g. bright green is still green and so on) and whilst providing the additional base16 colours to applications such as Vim.
+A shell script to change your shell's default ANSI colors but most importantly, colors 17 to 21 of your shell's 256 colorspace (if supported). This script makes it possible honor the original bright colors of your shell (e.g. bright green is still green and so on) whilst providing the additional base16 colors to applications such as Vim.
 
 ## Use Cases
 * You want to use a `*.256.*` varient of a Termainal theme designed to honor the original bright colors.
