@@ -1,27 +1,26 @@
 #!/bin/bash
-mappings=(
-18/18/18-Black
-ab/46/42-Red
-a1/b5/6c-Green
-f7/ca/88-Yellow
-7c/af/c2-Blue
-ba/8b/af-Magenta
-86/c1/b9-Cyan
-d8/d8/d8-White
-58/58/58-Bright_Black
-ab/46/42-Bright_Red
-a1/b5/6c-Bright_Green
-f7/ca/88-Bright_Yellow
-7c/af/c2-Bright_Blue
-ba/8b/af-Bright_Magenta
-86/c1/b9-Bright_Cyan
-f8/f8/f8-Bright_White
-dc/96/56
-a1/69/46
-28/28/28
-38/38/38
-b8/b8/b8
-e8/e8/e8
+theme=${1:-base16-default.sh}
+if [ -f $theme ]; then
+  # get the color declarations in said theme, assumes there is a block of text that starts with color00= and ends with new line
+  eval $(awk '/^color00=/,/^$/ {print}' $theme | sed 's/#.*//')
+fi;
+ansi_mappings=(
+  Black
+  Red
+  Green
+  Yellow
+  Blue
+  Magenta
+  Cyan
+  White
+  Bright_Black
+  Bright_Red
+  Bright_Green
+  Bright_Yellow
+  Bright_Blue
+  Bright_Magenta
+  Bright_Cyan
+  Bright_White
 )
 colors=(
   base00
@@ -48,5 +47,6 @@ colors=(
   base06
 )
 for i in `seq 0 21`; do
-  printf "\x1b[38;5;%smcolor%02s %s %-30s \x1b[48;5;%sm                                   \x1b[0m\n" $i $i ${colors[i]} ${mappings[i]} $i
+  eval current_color=$(printf "\$color%02s" $i)
+  printf "\x1b[38;5;%smcolor%02s %s %s %-30s \x1b[48;5;%sm                                   \x1b[0m\n" $i $i ${colors[i]} ${current_color:-unknown} ${ansi_mappings[i]} $i
 done;
