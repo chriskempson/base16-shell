@@ -28,6 +28,8 @@ In `config.fish` place the following lines:
     eval sh $HOME/.config/base16-shell/base16-default.dark.sh
 
 ## Troubleshooting
-Run the included `colortest` script and check that your colour assignments appear correct. If your teminal does not support the setting of colours in within the 256 colorspace (e.g. Apple Terminal), colours 16 to 21 will appear blue.
+Run the included **colortest** script and check that your colour assignments appear correct. If your teminal does not support the setting of colours in within the 256 colorspace (e.g. Apple Terminal), colours 16 to 21 will appear blue.
 
 ![256 colorspace bad example](https://raw.github.com/chriskempson/base16-shell/master/256-colorspace-bad-example.png)
+
+If **colortest** is run without any arguments e.g. `./colortest` the hex values shown will correspond to the default scheme. If you'd like to see the hex values for a particular scheme pass the file name of the theme as the arguement e.g. `./colortest base16-ocean.sh`.
