@@ -1,23 +1,52 @@
 #!/bin/bash
-printf "\x1b[38;5;0mcolor0 base00\n"
-printf "\x1b[38;5;1mcolor1 base08\n"
-printf "\x1b[38;5;2mcolor2 base0B\n"
-printf "\x1b[38;5;3mcolor3 base0A\n"
-printf "\x1b[38;5;4mcolor4 base0D\n"
-printf "\x1b[38;5;5mcolor5 base0E\n"
-printf "\x1b[38;5;6mcolor6 base0C\n"
-printf "\x1b[38;5;7mcolor7 base05\n"
-printf "\x1b[38;5;8mcolor8 base03\n"
-printf "\x1b[38;5;9mcolor9 base08\n"
-printf "\x1b[38;5;10mcolor10 base0B\n"
-printf "\x1b[38;5;11mcolor11 base0A\n"
-printf "\x1b[38;5;12mcolor12 base0D\n"
-printf "\x1b[38;5;13mcolor13 base0E\n"
-printf "\x1b[38;5;14mcolor14 base0C\n"
-printf "\x1b[38;5;15mcolor15 base07\n"
-printf "\x1b[38;5;16mcolor16 base09\n"
-printf "\x1b[38;5;17mcolor17 base0F\n"
-printf "\x1b[38;5;18mcolor18 base01\n"
-printf "\x1b[38;5;19mcolor19 base02\n"
-printf "\x1b[38;5;20mcolor20 base04\n"
-printf "\x1b[38;5;21mcolor21 base06\n"
+theme=${1:-base16-default.sh}
+if [ -f $theme ]; then
+  # get the color declarations in said theme, assumes there is a block of text that starts with color00= and ends with new line
+  eval $(awk '/^color00=/,/^$/ {print}' $theme | sed 's/#.*//')
+fi;
+ansi_mappings=(
+  Black
+  Red
+  Green
+  Yellow
+  Blue
+  Magenta
+  Cyan
+  White
+  Bright_Black
+  Bright_Red
+  Bright_Green
+  Bright_Yellow
+  Bright_Blue
+  Bright_Magenta
+  Bright_Cyan
+  Bright_White
+)
+colors=(
+  base00
+  base08
+  base0B
+  base0A
+  base0D
+  base0E
+  base0C
+  base05
+  base03
+  base08
+  base0B
+  base0A
+  base0D
+  base0E
+  base0C
+  base07
+  base09
+  base0F
+  base01
+  base02
+  base04
+  base06
+)
+for i in `seq 0 21`; do
+  eval current_color=$(printf "\$color%02s" $i)
+  printf "\x1b[38;5;%smcolor%02s %s %s %-30s \x1b[48;5;%sm                                   \x1b[0m\n" $i $i ${colors[i]} ${current_color:-unknown} ${ansi_mappings[i]} $i
+done;
