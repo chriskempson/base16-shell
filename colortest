@@ -49,6 +49,7 @@ colors=(
   base06
 )
 for i in `seq 0 21`; do
-  eval current_color=$(printf "\$color%02s" $i)
-  printf "\x1b[38;5;%smcolor%02s %s %s %-30s \x1b[48;5;%sm                                   \x1b[0m\n" $i $i ${colors[i]} ${current_color:-unknown} ${ansi_mappings[i]} $i
+  eval current_color=$(printf "\${color%02s}" $i) 
+  current_color=$(echo ${current_color//\//} | tr '[:lower:]' '[:upper:]') # get rid of slashes, and uppercase
+  printf "\x1b[38;5;%smcolor%02s %s %s %-30s \x1b[48;5;%sm                                   \x1b[0m\n" $i $i ${colors[i]} ${current_color:-unknown} ${ansi_mappings[i]:-""} $i
 done;
