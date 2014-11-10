@@ -1,8 +1,10 @@
 #!/bin/bash
-theme=${1:-base16-default.sh}
+theme=${1:-base16-default.dark.sh}
 if [ -f $theme ]; then
   # get the color declarations in said theme, assumes there is a block of text that starts with color00= and ends with new line
   eval $(awk '/^color00=/,/^$/ {print}' $theme | sed 's/#.*//')
+else
+  printf "No theme file %s found\n" $theme
 fi;
 ansi_mappings=(
   Black
@@ -47,6 +49,7 @@ colors=(
   base06
 )
 for i in `seq 0 21`; do
-  eval current_color=$(printf "\$color%02s" $i)
-  printf "\x1b[38;5;%smcolor%02s %s %s %-30s \x1b[48;5;%sm                                   \x1b[0m\n" $i $i ${colors[i]} ${current_color:-unknown} ${ansi_mappings[i]} $i
+  eval current_color=$(printf "\${color%02s}" $i) 
+  current_color=$(echo ${current_color//\//} | tr '[:lower:]' '[:upper:]') # get rid of slashes, and uppercase
+  printf "\x1b[38;5;%smcolor%02s %s %s %-30s \x1b[48;5;%sm                                   \x1b[0m\n" $i $i ${colors[i]} ${current_color:-unknown} ${ansi_mappings[i]:-""} $i
 done;
