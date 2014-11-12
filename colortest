@@ -48,8 +48,15 @@ colors=(
   base04
   base06
 )
-for i in `seq 0 21`; do
-  eval current_color=$(printf "\${color%02s}" $i) 
+for padded_value in `seq -w 0 21`; do
+  color_variable="color${padded_value}"
+  eval current_color=\$${color_variable}
   current_color=$(echo ${current_color//\//} | tr '[:lower:]' '[:upper:]') # get rid of slashes, and uppercase
-  printf "\x1b[38;5;%smcolor%02s %s %s %-30s \x1b[48;5;%sm                                   \x1b[0m\n" $i $i ${colors[i]} ${current_color:-unknown} ${ansi_mappings[i]:-""} $i
+  non_padded_value=$((10#$padded_value))
+  base16_color_name=${colors[$non_padded_value]}
+  current_color_label=${current_color:-unknown}
+  ansi_label=${ansi_mappings[$non_padded_value]} 
+  block=$(printf "\x1b[48;5;${non_padded_value}m___________________________________")
+  foreground=$(printf "\x1b[38;5;${non_padded_value}m$color_variable")
+  printf "%s %s %s %-30s %s\x1b[0m\n" $foreground $base16_color_name $current_color_label ${ansi_label:-""} $block
 done;
