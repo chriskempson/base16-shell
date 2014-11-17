@@ -38,13 +38,16 @@ if [ -n "$TMUX" ]; then
   # (Source: http://permalink.gmane.org/gmane.comp.terminal-emulators.tmux.user/1324)
   printf_template="\033Ptmux;\033\033]4;%d;rgb:%s\007\033\\"
   printf_template_var="\033Ptmux;\033\033]%d;rgb:%s\007\033\\"
+  printf_template_custom="\033Ptmux;\033\033]%s%s\007\033\\"
 elif [ "${TERM%%-*}" = "screen" ]; then
   # GNU screen (screen, screen-256color, screen-256color-bce)
   printf_template="\033P\033]4;%d;rgb:%s\007\033\\"
   printf_template_var="\033P\033]%d;rgb:%s\007\033\\"
+  printf_template_custom="\033P\033]%s%s\007\033\\"
 else
   printf_template="\033]4;%d;rgb:%s\033\\"
   printf_template_var="\033]%d;rgb:%s\033\\"
+  printf_template_custom="\033]%s%s\033\\"
 fi
 
 # 16 color space
@@ -74,9 +77,20 @@ printf $printf_template 20 $color20
 printf $printf_template 21 $color21
 
 # foreground / background / cursor color
-printf $printf_template_var 10 $color_foreground
-printf $printf_template_var 11 $color_background
-printf $printf_template_var 12 $color_cursor
+if [ -n "$ITERM_SESSION_ID" ]; then
+  # iTerm2 proprietary escape codes
+  printf $printf_template_custom Pg D0D0D0 # forground
+  printf $printf_template_custom Ph 151515 # background
+  printf $printf_template_custom Pi D0D0D0 # bold color
+  printf $printf_template_custom Pj 303030 # selection color
+  printf $printf_template_custom Pk D0D0D0 # selected text color
+  printf $printf_template_custom Pl D0D0D0 # cursor
+  printf $printf_template_custom Pm 151515 # cursor text
+else
+  printf $printf_template_var 10 $color_foreground
+  printf $printf_template_var 11 $color_background
+  printf $printf_template_var 12 $color_cursor
+fi
 
 # clean up
 unset printf_template
