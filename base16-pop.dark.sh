@@ -25,6 +25,11 @@ color19="30/30/30" # Base 02
 color20="b0/b0/b0" # Base 04
 color21="e0/e0/e0" # Base 06
 
+if [[ $- != *i* ]]; then
+  # non-interactive
+  alias printf=/bin/false
+fi
+
 # 16 color space
 printf "\e]4;0;rgb:$color00\e\\"
 printf "\e]4;1;rgb:$color01\e\\"
