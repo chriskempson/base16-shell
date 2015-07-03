@@ -12,7 +12,10 @@ base16_${theme}_${variation}()
   ln -fs $script ~/.base16_theme 
   export BASE16_THEME=base16-${theme}
   export BASE16_VARIATION=$variation
-  cat <<vimrc_background > ~/.vimrc_background
+  if type tmux_${variation} >/dev/null; then
+    tmux_${variation}
+  fi
+  cat <<vimrc_background >! ~/.vimrc_background
 set background=$variation
 colorscheme base16-$theme
 vimrc_background
