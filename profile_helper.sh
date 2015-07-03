@@ -15,7 +15,8 @@ base16_${theme}_${variation}()
   if type tmux_${variation} >/dev/null; then
     tmux_${variation}
   fi
-  cat <<vimrc_background >! ~/.vimrc_background
+  [ -f ~/.vimrc_background ] && rm ~/.vimrc_background
+  cat <<vimrc_background > ~/.vimrc_background
 set background=$variation
 colorscheme base16-$theme
 vimrc_background
