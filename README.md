@@ -25,7 +25,9 @@ In `~/.bashrc` or `~/.zshrc` place the following lines:
 In `config.fish` place the following lines:
 
     # Base16 Shell
-    eval sh $HOME/.config/base16-shell/base16-default.dark.sh
+    if status --is-interactive
+        eval sh $HOME/.config/base16-shell/base16-default.dark.sh
+    end
 
 ## Troubleshooting
 Run the included **colortest** script and check that your colour assignments appear correct. If your teminal does not support the setting of colours in within the 256 colorspace (e.g. Apple Terminal), colours 17 to 21 will appear blue.
