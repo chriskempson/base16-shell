@@ -9,11 +9,11 @@ fi
 
 color00="1b/19/18" # Base 00 - Black
 color01="f2/2c/40" # Base 08 - Red
-color02="5a/b7/38" # Base 0B - Green
-color03="d5/91/1a" # Base 0A - Yellow
+color02="7b/97/26" # Base 0B - Green
+color03="c3/84/18" # Base 0A - Yellow
 color04="40/7e/e7" # Base 0D - Blue
 color05="66/66/ea" # Base 0E - Magenta
-color06="00/ad/9c" # Base 0C - Cyan
+color06="3d/97/b8" # Base 0C - Cyan
 color07="a8/a1/9f" # Base 05 - White
 color08="76/6e/6b" # Base 03 - Bright Black
 color09=$color01 # Base 08 - Bright Red
@@ -44,6 +44,9 @@ elif [ "${TERM%%-*}" = "screen" ]; then
   printf_template="\033P\033]4;%d;rgb:%s\007\033\\"
   printf_template_var="\033P\033]%d;rgb:%s\007\033\\"
   printf_template_custom="\033P\033]%s%s\007\033\\"
+elif [[ $- != *i* ]]; then
+  # non-interactive
+  alias printf=/bin/false
 else
   printf_template="\033]4;%d;rgb:%s\033\\"
   printf_template_var="\033]%d;rgb:%s\033\\"
@@ -89,7 +92,7 @@ if [ -n "$ITERM_SESSION_ID" ]; then
 else
   printf $printf_template_var 10 $color_foreground
   printf $printf_template_var 11 $color_background
-  printf $printf_template_var 12 $color_cursor
+  printf $printf_template_custom 12 ";7" # cursor (reverse video)
 fi
 
 # clean up
