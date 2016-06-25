@@ -10,7 +10,7 @@ fi
 color00="13/15/13" # Base 00 - Black
 color01="e6/19/3c" # Base 08 - Red
 color02="29/a3/29" # Base 0B - Green
-color03="c3/c3/22" # Base 0A - Yellow
+color03="98/98/1b" # Base 0A - Yellow
 color04="3d/62/f5" # Base 0D - Blue
 color05="ad/2b/ee" # Base 0E - Magenta
 color06="19/99/b3" # Base 0C - Cyan
@@ -22,7 +22,7 @@ color11=$color03 # Base 0A - Bright Yellow
 color12=$color04 # Base 0D - Bright Blue
 color13=$color05 # Base 0E - Bright Magenta
 color14=$color06 # Base 0C - Bright Cyan
-color15="f0/ff/f0" # Base 07 - Bright White
+color15="f4/fb/f4" # Base 07 - Bright White
 color16="87/71/1d" # Base 09
 color17="e6/19/c3" # Base 0F
 color18="24/29/24" # Base 01
@@ -44,6 +44,9 @@ elif [ "${TERM%%-*}" = "screen" ]; then
   printf_template="\033P\033]4;%d;rgb:%s\007\033\\"
   printf_template_var="\033P\033]%d;rgb:%s\007\033\\"
   printf_template_custom="\033P\033]%s%s\007\033\\"
+elif [[ $- != *i* ]]; then
+  # non-interactive
+  alias printf=/bin/false
 else
   printf_template="\033]4;%d;rgb:%s\033\\"
   printf_template_var="\033]%d;rgb:%s\033\\"
@@ -89,7 +92,7 @@ if [ -n "$ITERM_SESSION_ID" ]; then
 else
   printf $printf_template_var 10 $color_foreground
   printf $printf_template_var 11 $color_background
-  printf $printf_template_var 12 $color_cursor
+  printf $printf_template_custom 12 ";7" # cursor (reverse video)
 fi
 
 # clean up
