@@ -1,7 +1,7 @@
 #!/bin/sh
 # base16-shell (https://github.com/chriskempson/base16-shell)
 # Base16 Shell template by Chris Kempson (http://chriskempson.com)
-# Atelier Forest scheme by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/forest)
+# Atelier Forest scheme by Bram de Haan (http://atelierbramdehaan.nl)
 
 if [ "${TERM%%-*}" = 'linux' ]; then
     # This script doesn't support linux console (use 'vconsole' template instead)
