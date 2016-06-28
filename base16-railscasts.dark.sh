@@ -89,7 +89,7 @@ if [ -n "$ITERM_SESSION_ID" ]; then
 else
   printf $printf_template_var 10 $color_foreground
   printf $printf_template_var 11 $color_background
-  printf $printf_template_var 12 $color_cursor
+  printf $printf_template_custom 12 ";7" # text cursor color (reverse video)
 fi
 
 # clean up
