@@ -1,7 +1,7 @@
 #!/bin/sh
 # base16-shell (https://github.com/chriskempson/base16-shell)
 # Base16 Shell template by Chris Kempson (http://chriskempson.com)
-# Solarized scheme by Ethan Schoonover (http://ethanschoonover.com/solarized)
+# Solarized Dark scheme by Ethan Schoonover (http://ethanschoonover.com/solarized)
 
 # This script doesn't support linux console (use 'vconsole' template instead)
 if [ "${TERM%%-*}" = 'linux' ]; then
