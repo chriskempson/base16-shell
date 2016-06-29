@@ -3,36 +3,36 @@
 # Base16 Shell template by Chris Kempson (http://chriskempson.com)
 # Tomorrow scheme by Chris Kempson (http://chriskempson.com)
 
+# This script doesn't support linux console (use 'vconsole' template instead)
 if [ "${TERM%%-*}" = 'linux' ]; then
-    # This script doesn't support linux console (use 'vconsole' template instead)
     return 2>/dev/null || exit 0
 fi
 
-color00="1d/1f/21" # Base 00 - Black
-color01="cc/66/66" # Base 08 - Red
-color02="b5/bd/68" # Base 0B - Green
-color03="f0/c6/74" # Base 0A - Yellow
-color04="81/a2/be" # Base 0D - Blue
-color05="b2/94/bb" # Base 0E - Magenta
-color06="8a/be/b7" # Base 0C - Cyan
-color07="c5/c8/c6" # Base 05 - White
-color08="96/98/96" # Base 03 - Bright Black
+color00="ff/ff/ff" # Base 00 - Black
+color01="c8/28/29" # Base 08 - Red
+color02="71/8c/00" # Base 0B - Green
+color03="ea/b7/00" # Base 0A - Yellow
+color04="42/71/ae" # Base 0D - Blue
+color05="89/59/a8" # Base 0E - Magenta
+color06="3e/99/9f" # Base 0C - Cyan
+color07="4d/4d/4c" # Base 05 - White
+color08="8e/90/8c" # Base 03 - Bright Black
 color09=$color01 # Base 08 - Bright Red
 color10=$color02 # Base 0B - Bright Green
 color11=$color03 # Base 0A - Bright Yellow
 color12=$color04 # Base 0D - Bright Blue
 color13=$color05 # Base 0E - Bright Magenta
 color14=$color06 # Base 0C - Bright Cyan
-color15="ff/ff/ff" # Base 07 - Bright White
-color16="de/93/5f" # Base 09
+color15="1d/1f/21" # Base 07 - Bright White
+color16="f5/87/1f" # Base 09
 color17="a3/68/5a" # Base 0F
-color18="28/2a/2e" # Base 01
-color19="37/3b/41" # Base 02
-color20="b4/b7/b4" # Base 04
-color21="e0/e0/e0" # Base 06
-color_foreground="c5/c8/c6" # Base 05
-color_background="1d/1f/21" # Base 00
-color_cursor="c5/c8/c6" # Base 05
+color18="e0/e0/e0" # Base 01
+color19="d6/d6/d6" # Base 02
+color20="96/98/96" # Base 04
+color21="28/2a/2e" # Base 06
+color_foreground="4d/4d/4c" # Base 05
+color_background="ff/ff/ff" # Base 00
+color_cursor="4d/4d/4c" # Base 05
 
 if [ -n "$TMUX" ]; then
   # Tell tmux to pass the escape sequences through
@@ -45,9 +45,6 @@ elif [ "${TERM%%-*}" = "screen" ]; then
   printf_template="\033P\033]4;%d;rgb:%s\007\033\\"
   printf_template_var="\033P\033]%d;rgb:%s\007\033\\"
   printf_template_custom="\033P\033]%s%s\007\033\\"
-elif [[ $- != *i* ]]; then
-  # Non-interactive
-  alias printf=/bin/false
 else
   printf_template="\033]4;%d;rgb:%s\033\\"
   printf_template_var="\033]%d;rgb:%s\033\\"
@@ -83,13 +80,13 @@ printf $printf_template 21 $color21
 # foreground / background / cursor color
 if [ -n "$ITERM_SESSION_ID" ]; then
   # iTerm2 proprietary escape codes
-  printf $printf_template_custom Pg <%= @base["05"]["hex"] %> # forground
-  printf $printf_template_custom Ph <%= @base["00"]["hex"] %> # background
-  printf $printf_template_custom Pi <%= @base["05"]["hex"] %> # bold color
-  printf $printf_template_custom Pj <%= @base["02"]["hex"] %> # selection color
-  printf $printf_template_custom Pk <%= @base["05"]["hex"] %> # selected text color
-  printf $printf_template_custom Pl <%= @base["05"]["hex"] %> # cursor
-  printf $printf_template_custom Pm <%= @base["00"]["hex"] %> # cursor text
+  printf $printf_template_custom Pg 4d4d4c # forground
+  printf $printf_template_custom Ph ffffff # background
+  printf $printf_template_custom Pi 4d4d4c # bold color
+  printf $printf_template_custom Pj d6d6d6 # selection color
+  printf $printf_template_custom Pk 4d4d4c # selected text color
+  printf $printf_template_custom Pl 4d4d4c # cursor
+  printf $printf_template_custom Pm ffffff # cursor text
 else
   printf $printf_template_var 10 $color_foreground
   printf $printf_template_var 11 $color_background

@@ -3,8 +3,8 @@
 # Base16 Shell template by Chris Kempson (http://chriskempson.com)
 # Paraiso scheme by Jan T. Sott
 
+# This script doesn't support linux console (use 'vconsole' template instead)
 if [ "${TERM%%-*}" = 'linux' ]; then
-    # This script doesn't support linux console (use 'vconsole' template instead)
     return 2>/dev/null || exit 0
 fi
 
@@ -45,9 +45,6 @@ elif [ "${TERM%%-*}" = "screen" ]; then
   printf_template="\033P\033]4;%d;rgb:%s\007\033\\"
   printf_template_var="\033P\033]%d;rgb:%s\007\033\\"
   printf_template_custom="\033P\033]%s%s\007\033\\"
-elif [[ $- != *i* ]]; then
-  # Non-interactive
-  alias printf=/bin/false
 else
   printf_template="\033]4;%d;rgb:%s\033\\"
   printf_template_var="\033]%d;rgb:%s\033\\"
@@ -83,13 +80,13 @@ printf $printf_template 21 $color21
 # foreground / background / cursor color
 if [ -n "$ITERM_SESSION_ID" ]; then
   # iTerm2 proprietary escape codes
-  printf $printf_template_custom Pg <%= @base["05"]["hex"] %> # forground
-  printf $printf_template_custom Ph <%= @base["00"]["hex"] %> # background
-  printf $printf_template_custom Pi <%= @base["05"]["hex"] %> # bold color
-  printf $printf_template_custom Pj <%= @base["02"]["hex"] %> # selection color
-  printf $printf_template_custom Pk <%= @base["05"]["hex"] %> # selected text color
-  printf $printf_template_custom Pl <%= @base["05"]["hex"] %> # cursor
-  printf $printf_template_custom Pm <%= @base["00"]["hex"] %> # cursor text
+  printf $printf_template_custom Pg a39e9b # forground
+  printf $printf_template_custom Ph 2f1e2e # background
+  printf $printf_template_custom Pi a39e9b # bold color
+  printf $printf_template_custom Pj 4f424c # selection color
+  printf $printf_template_custom Pk a39e9b # selected text color
+  printf $printf_template_custom Pl a39e9b # cursor
+  printf $printf_template_custom Pm 2f1e2e # cursor text
 else
   printf $printf_template_var 10 $color_foreground
   printf $printf_template_var 11 $color_background
