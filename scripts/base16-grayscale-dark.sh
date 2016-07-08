@@ -1,7 +1,7 @@
 #!/bin/sh
 # base16-shell (https://github.com/chriskempson/base16-shell)
 # Base16 Shell template by Chris Kempson (http://chriskempson.com)
-# Grayscale scheme by Alexandre Gavioli (https://github.com/Alexx2/)
+# Grayscale Dark scheme by Alexandre Gavioli (https://github.com/Alexx2/)
 
 # This script doesn't support linux console (use 'vconsole' template instead)
 if [ "${TERM%%-*}" = 'linux' ]; then

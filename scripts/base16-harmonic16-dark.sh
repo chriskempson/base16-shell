@@ -1,7 +1,7 @@
 #!/bin/sh
 # base16-shell (https://github.com/chriskempson/base16-shell)
 # Base16 Shell template by Chris Kempson (http://chriskempson.com)
-# harmonic16 scheme by Jannik Siebert (https://github.com/janniks)
+# Harmonic16 Dark scheme by Jannik Siebert (https://github.com/janniks)
 
 # This script doesn't support linux console (use 'vconsole' template instead)
 if [ "${TERM%%-*}" = 'linux' ]; then
