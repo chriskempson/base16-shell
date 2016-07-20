@@ -21,8 +21,13 @@ for script in $script_dir/scripts/base16*.sh; do
   [[ $theme =~ -light ]] && variation=light
   theme=${theme%-dark}
   theme=${theme%-light}
+  if [[ $variation != "none" ]]; then
+    func_name="base16_${theme}_${variation}"
+  else
+    func_name="base16_${theme}"
+  fi
   cat <<FUNC
-base16_${theme}_${variation}()
+$func_name()
 {
   [ -f $script ] && . $script
   ln -fs $script ~/.base16_theme
