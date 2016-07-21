@@ -23,6 +23,16 @@ In `~/.bashrc` or `~/.zshrc` place the following lines:
 
 start a new shell and then type base16 (tab completion)
 
+### Base16-Vim Users
+
+the profile_helper will update a ~/.vimrc_background file that will have your current the colorscheme, you just need to source this file in your vimrc: i.e. (remove the base16colorspace line if not needed)
+
+    if filereadable(expand("~/.vimrc_background"))
+      let base16colorspace=256
+      source ~/.vimrc_background
+    endif
+
+
 ### Fish
 In `config.fish` place the following lines:
 
