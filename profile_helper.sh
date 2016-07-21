@@ -1,11 +1,18 @@
 #!/bin/bash
 script_dir=$(cd $(dirname ${BASH_SOURCE[0]}) && pwd)
+get_variation() {
+  local theme=$1
+  variation=none
+  if [[ $theme =~ -dark ]] || [[ $theme =~ -night$ ]]; then
+    variation=dark
+  fi
+  if [[ $theme =~ -light ]] || [[ $theme =~ tomorrow$ ]]; then
+    variation=light
+  fi
+}
 if [ -f ~/.base16_theme ]; then
   script_name=$(basename $(readlink -f ~/.base16_theme) .sh)
-  variation=${script_name#*.}
-  variation=none
-  [[ $theme =~ -dark ]] && variation=dark
-  [[ $theme =~ -light ]] && variation=light
+  get_variation $script_name
   echo "export BASE16_THEME=${script_name}"
   echo "export BASE16_VARIATION=$variation"
   echo ". ~/.base16_theme"
@@ -16,16 +23,8 @@ fi
 for script in $script_dir/scripts/base16*.sh; do
   script_name=$(basename $script .sh)
   theme=${script_name#*-}
-  variation=none
-  [[ $theme =~ -dark ]] && variation=dark
-  [[ $theme =~ -light ]] && variation=light
-  theme=${theme%-dark}
-  theme=${theme%-light}
-  if [[ $variation != "none" ]]; then
-    func_name="base16_${theme}_${variation}"
-  else
-    func_name="base16_${theme}"
-  fi
+  get_variation $script_name
+  func_name="base16_${theme}"
   cat <<FUNC
 $func_name()
 {
@@ -37,9 +36,6 @@ $func_name()
     tmux_${variation}
   fi
   [ -f ~/.vimrc_background ] && rm ~/.vimrc_background
-  if [[ $variation != "none" ]]; then
-    echo "background=$variation" >> ~/.vimrc_background
-  fi
   echo "colorscheme base16-$theme" >> ~/.vimrc_background
 }
 FUNC
