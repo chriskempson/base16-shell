@@ -17,7 +17,7 @@ if [ -f ~/.base16_theme ]; then
   echo "export BASE16_VARIATION=$variation"
   echo ". ~/.base16_theme"
   if [[ $variation != "none" ]]; then
-    echo "tmux_${variation}"
+    echo "type tmux_${variation} &>/dev/null && tmux_${variation}"
   fi
 fi
 for script in $script_dir/scripts/base16*.sh; do
