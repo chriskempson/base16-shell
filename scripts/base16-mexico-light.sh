@@ -1,54 +1,54 @@
 #!/bin/sh
 # base16-shell (https://github.com/chriskempson/base16-shell)
 # Base16 Shell template by Chris Kempson (http://chriskempson.com)
-# Summerfruit scheme by Christopher Corley (http://cscorley.github.io/)
+# Mexico Light scheme by Sheldon Johnson
 
 # This script doesn't support linux console (use 'vconsole' template instead)
 if [ "${TERM%%-*}" = 'linux' ]; then
     return 2>/dev/null || exit 0
 fi
 
-color00="15/15/15" # Base 00 - Black
-color01="FF/00/86" # Base 08 - Red
-color02="00/C9/18" # Base 0B - Green
-color03="AB/A8/00" # Base 0A - Yellow
-color04="37/77/E6" # Base 0D - Blue
-color05="AD/00/A1" # Base 0E - Magenta
-color06="1f/aa/aa" # Base 0C - Cyan
-color07="D0/D0/D0" # Base 05 - White
-color08="50/50/50" # Base 03 - Bright Black
+color00="f8/f8/f8" # Base 00 - Black
+color01="ab/46/42" # Base 08 - Red
+color02="53/89/47" # Base 0B - Green
+color03="f7/9a/0e" # Base 0A - Yellow
+color04="7c/af/c2" # Base 0D - Blue
+color05="96/60/9e" # Base 0E - Magenta
+color06="4b/80/93" # Base 0C - Cyan
+color07="38/38/38" # Base 05 - White
+color08="b8/b8/b8" # Base 03 - Bright Black
 color09=$color01 # Base 08 - Bright Red
 color10=$color02 # Base 0B - Bright Green
 color11=$color03 # Base 0A - Bright Yellow
 color12=$color04 # Base 0D - Bright Blue
 color13=$color05 # Base 0E - Bright Magenta
 color14=$color06 # Base 0C - Bright Cyan
-color15="FF/FF/FF" # Base 07 - Bright White
-color16="FD/89/00" # Base 09
-color17="cc/66/33" # Base 0F
-color18="20/20/20" # Base 01
-color19="30/30/30" # Base 02
-color20="B0/B0/B0" # Base 04
-color21="E0/E0/E0" # Base 06
-color_foreground="D0/D0/D0" # Base 05
-color_background="15/15/15" # Base 00
-color_cursor="D0/D0/D0" # Base 05
+color15="18/18/18" # Base 07 - Bright White
+color16="dc/96/56" # Base 09
+color17="a1/69/46" # Base 0F
+color18="e8/e8/e8" # Base 01
+color19="d8/d8/d8" # Base 02
+color20="58/58/58" # Base 04
+color21="28/28/28" # Base 06
+color_foreground="38/38/38" # Base 05
+color_background="f8/f8/f8" # Base 00
+color_cursor="38/38/38" # Base 05
 
 if [ -n "$TMUX" ]; then
   # Tell tmux to pass the escape sequences through
   # (Source: http://permalink.gmane.org/gmane.comp.terminal-emulators.tmux.user/1324)
-  printf_template="\033Ptmux;\033\033]4;%d;rgb:%s\007\033\\"
-  printf_template_var="\033Ptmux;\033\033]%d;rgb:%s\007\033\\"
-  printf_template_custom="\033Ptmux;\033\033]%s%s\007\033\\"
+  printf_template='\033Ptmux;\033\033]4;%d;rgb:%s\033\033\\\033\\'
+  printf_template_var='\033Ptmux;\033\033]%d;rgb:%s\033\033\\\033\\'
+  printf_template_custom='\033Ptmux;\033\033]%s%s\033\033\\\033\\'
 elif [ "${TERM%%-*}" = "screen" ]; then
   # GNU screen (screen, screen-256color, screen-256color-bce)
-  printf_template="\033P\033]4;%d;rgb:%s\007\033\\"
-  printf_template_var="\033P\033]%d;rgb:%s\007\033\\"
-  printf_template_custom="\033P\033]%s%s\007\033\\"
+  printf_template='\033P\033]4;%d;rgb:%s\033\\'
+  printf_template_var='\033P\033]%d;rgb:%s\033\\'
+  printf_template_custom='\033P\033]%s%s\033\\'
 else
-  printf_template="\033]4;%d;rgb:%s\033\\"
-  printf_template_var="\033]%d;rgb:%s\033\\"
-  printf_template_custom="\033]%s%s\033\\"
+  printf_template='\033]4;%d;rgb:%s\033\\'
+  printf_template_var='\033]%d;rgb:%s\033\\'
+  printf_template_custom='\033]%s%s\033\\'
 fi
 
 # 16 color space
@@ -80,13 +80,13 @@ printf $printf_template 21 $color21
 # foreground / background / cursor color
 if [ -n "$ITERM_SESSION_ID" ]; then
   # iTerm2 proprietary escape codes
-  printf $printf_template_custom Pg D0D0D0 # forground
-  printf $printf_template_custom Ph 151515 # background
-  printf $printf_template_custom Pi D0D0D0 # bold color
-  printf $printf_template_custom Pj 303030 # selection color
-  printf $printf_template_custom Pk D0D0D0 # selected text color
-  printf $printf_template_custom Pl D0D0D0 # cursor
-  printf $printf_template_custom Pm 151515 # cursor text
+  printf $printf_template_custom Pg 383838 # forground
+  printf $printf_template_custom Ph f8f8f8 # background
+  printf $printf_template_custom Pi 383838 # bold color
+  printf $printf_template_custom Pj d8d8d8 # selection color
+  printf $printf_template_custom Pk 383838 # selected text color
+  printf $printf_template_custom Pl 383838 # cursor
+  printf $printf_template_custom Pm f8f8f8 # cursor text
 else
   printf $printf_template_var 10 $color_foreground
   printf $printf_template_var 11 $color_background
