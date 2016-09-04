@@ -1,5 +1,5 @@
 #!/bin/bash
-theme=${1:-base16-default.dark.sh}
+theme=$(dirname $0)/scripts/${1:-base16-default-dark.sh}
 if [ -f $theme ]; then
   # get the color declarations in said theme, assumes there is a block of text that starts with color00= and ends with new line
   eval $(awk '/^color00=/,/^$/ {print}' $theme | sed 's/#.*//')
