@@ -1,0 +1,56 @@
+#!/bin/sh
+
+. ./realpath.sh
+
+setUp() {
+    _test_previousdir=$PWD
+    _test_workingdir=$(mktemp -d -t sh-realpath.XXXXXX)
+    cd -P -- "$_test_workingdir"
+}
+
+tearDown() {
+    cd -- "$_test_previousdir"
+    rm -rf -- "$_test_workingdir"
+}
+
+it_outputs_pwd_when_passed_zero_args() {
+    local output
+
+    output=$(realpath)
+
+    assertTrue '`realpath` succeeds' $?
+    assertEquals 'outputs "$PWD/"' "$PWD/" "$output"
+}
+
+it_outputs_the_canonical_path_of_crazy_paths() {
+    local output
+    mkdir -p somedir/targetdir somedir/anotherdir 
+    ln -s somedir somedirlink
+    ln -s somedir/anotherdir/../anotherlink somelink
+    ln -s targetdir/targetpath somedir/anotherlink
+
+    output=$(realpath .///somedirlink/././anotherdir/../../somelink)
+
+    assertTrue '`realpath .///somedirlink/././anotherdir/../../somelink` succeeds' $?
+    assertEquals 'outputs "$PWD/somedir/targetdir/targetpath"' "$PWD/somedir/targetdir/targetpath" "$output"
+}
+
+##### Test Harness #####
+
+# suite() -- find and register tests to be run
+#   Derived from Gary Bernhardt's screencast #68
+#   (https://www.destroyallsoftware.com/screencasts/catalog/test-driving-shell-scripts)
+suite() {
+    local name tests
+    tests=$(grep ^it_ "$0" | cut -d '(' -f 1)
+    for name in $tests; do
+        suite_addTest "$name"
+    done
+}
+
+if hash shunit2 2>/dev/null; then
+    . shunit2
+else
+    echo 'Error: shunit2(1) could not be located. Please install it on your $PATH.' >&2
+    exit 1
+fi
