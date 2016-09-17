@@ -18,8 +18,7 @@ $func_name()
   [ -f $script ] && . $script
   ln -fs $script ~/.base16_theme
   export BASE16_THEME=${theme}
-  [ -f ~/.vimrc_background ] && rm ~/.vimrc_background
-  echo "colorscheme base16-$theme" >> ~/.vimrc_background
+  echo "colorscheme base16-$theme" > ~/.vimrc_background
 }
 FUNC
 done;
