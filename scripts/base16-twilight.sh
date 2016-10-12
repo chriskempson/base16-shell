@@ -1,7 +1,7 @@
 #!/bin/sh
 # base16-shell (https://github.com/chriskempson/base16-shell)
 # Base16 Shell template by Chris Kempson (http://chriskempson.com)
-# Twilight scheme by David Hart (http://hart-dev.com)
+# Twilight scheme by David Hart (https://github.com/hartbit)
 
 # This script doesn't support linux console (use 'vconsole' template instead)
 if [ "${TERM%%-*}" = 'linux' ]; then
