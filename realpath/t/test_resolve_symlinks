@@ -1,0 +1,177 @@
+#!/bin/sh
+
+. ./realpath.sh
+
+setUp() {
+    _test_previousdir=$PWD
+    _test_workingdir=$(mktemp -d -t sh-realpath.XXXXXX)
+    cd -P -- "$_test_workingdir"
+}
+
+tearDown() {
+    cd -- "$_test_previousdir"
+    rm -rf -- "$_test_workingdir"
+}
+
+it_outputs_nothing_when_passed_nothing() {
+    local output
+    output=$(resolve_symlinks)
+
+    assertTrue '`resolve_symlinks` succeeds' $?
+    assertNull 'there is no output' "$output"
+}
+
+it_outputs_filename_when_passed_a_nonexistent_filename() {
+    local output
+    output=$(resolve_symlinks non_existent_file)
+
+    assertTrue '`resolve_symlinks non_existent_file` succeeds' $?
+    assertEquals 'output is "non_existent_file"' non_existent_file "$output"
+}
+
+it_outputs_filename_when_passed_a_file_that_exists() {
+    : >|somefile
+
+    output=$(resolve_symlinks somefile)
+
+    assertTrue '`resolve_symlinks somefile` succeeds' $?
+    assertEquals 'output is "somefile"' somefile "$output"
+}
+
+it_outputs_the_target_when_passed_a_symlink_to_a_file_that_doesnt_exist() {
+    local output
+    ln -s non_existent_file somelink
+
+    output=$(resolve_symlinks somelink)
+
+    assertTrue '`resolve_symlinks somelink` succeeds' $?
+    assertEquals 'output is "non_existent_file"' non_existent_file "$output"
+}
+
+it_outputs_the_target_when_passed_a_symlink_to_a_file_that_exists() {
+    local output
+    ln -s somefile somelink
+    : >|somefile
+
+    output=$(resolve_symlinks somelink)
+
+    assertTrue '`resolve_symlinks somelink` succeeds' $?
+    assertEquals 'output is "somefile"' somefile "$output"
+}
+
+it_outputs_the_target_when_passed_a_symlink_in_a_child_dir() {
+    local output
+    mkdir somedir
+    ln -s somepath somedir/somelink
+
+    output=$(resolve_symlinks somedir/somelink)
+
+    assertTrue '`resolve_symlinks somedir/somelink` succeeds' $?
+    assertEquals 'output is "somedir/somepath"' somedir/somepath "$output"
+}
+
+it_outputs_the_final_target_when_passed_a_symlink_to_a_symlink_to_a_file() {
+    local output
+    ln -s anotherlink somelink
+    ln -s somepath anotherlink
+
+    output=$(resolve_symlinks somelink)
+
+    assertTrue '`resolve_symlinks somelink` succeeds' $?
+    assertEquals 'output is "somepath"' somepath "$output"
+}
+
+it_outputs_the_final_target_with_path_when_passed_a_symlink_to_a_file_in_another_dir() {
+    local output
+    ln -s somedir/somepath somelink
+
+    output=$(resolve_symlinks somelink)
+
+    assertTrue '`resolve_symlinks somelink` succeeds' $?
+    assertEquals 'output is "somedir/somepath"' somedir/somepath "$output"
+}
+
+it_outputs_the_final_target_with_path_when_passed_a_symlink_to_a_symlink_in_another_dir() {
+    local output
+    ln -s somedir/anotherlink somelink
+    mkdir somedir
+    ln -s somepath somedir/anotherlink
+
+    output=$(resolve_symlinks somelink)
+
+    assertTrue '`resolve_symlinks somelink` succeeds' $?
+    assertEquals 'output is "somedir/somepath"' somedir/somepath "$output"
+}
+
+it_outputs_a_valid_path_to_the_current_dir_when_passed_a_symlink_that_has_trailing_dots() {
+    local output
+    ln -s somepath/.. somelink
+
+    output=$(resolve_symlinks somelink)
+
+    assertTrue '`resolve_symlinks somelink` succeeds' $?
+    assertEquals 'output is "somepath/.."' somepath/.. "$output"
+}
+
+it_outputs_a_valid_path_to_the_final_target_when_passed_a_symlink_that_references_the_parent_dir() {
+    local output
+    mkdir somedir
+    ln -s ../somepath somedir/somelink
+
+    output=$(resolve_symlinks somedir/somelink)
+
+    assertTrue '`resolve_symlinks somedir/somelink` succeeds' $?
+    assertEquals 'output is "somedir/../somepath"' somedir/../somepath "$output"
+}
+
+it_outputs_the_absolute_path_when_passed_a_symlink_to_an_absolute_path() {
+    local output
+    ln -s /some/absolute/path somelink
+
+    output=$(resolve_symlinks somelink)
+
+    assertTrue '`resolve_symlinks somelink` succeeds' $?
+    assertEquals 'output is "/some/absolute/path"' /some/absolute/path "$output"
+}
+
+it_outputs_the_final_target_when_passed_a_symlink_to_an_absolute_path_symlink() {
+    local output
+    ln -s $PWD/anotherlink somelink
+    ln -s somepath anotherlink
+
+    output=$(resolve_symlinks somelink)
+
+    assertTrue '`resolve_symlinks somelink` succeeds' $?
+    assertEquals 'output is "$PWD/somepath"' $PWD/somepath "$output"
+}
+
+it_returns_an_error_when_passed_a_symlink_to_a_symlink_to_a_symlink_that_points_to_the_first_symlink() {
+    ln -s anotherlink somelink
+    ln -s circularlink anotherlink
+    ln -s somelink circularlink
+
+    resolve_symlinks somelink
+
+    assertFalse '`resolve_symlinks somelink` fails' $?
+}
+
+
+##### Test Harness #####
+
+# suite() -- find and register tests to be run
+#   Derived from Gary Bernhardt's screencast #68
+#   (https://www.destroyallsoftware.com/screencasts/catalog/test-driving-shell-scripts)
+suite() {
+    local name tests
+    tests=$(grep ^it_ "$0" | cut -d '(' -f 1)
+    for name in $tests; do
+        suite_addTest "$name"
+    done
+}
+
+if hash shunit2 2>/dev/null; then
+    . shunit2
+else
+    echo 'Error: shunit2(1) could not be located. Please install it on your $PATH.' >&2
+    exit 1
+fi
