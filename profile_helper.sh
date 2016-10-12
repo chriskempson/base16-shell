@@ -1,5 +1,10 @@
 #!/bin/bash
-script_dir=$(cd $(dirname ${BASH_SOURCE[0]}) && pwd)
+if [ -s $BASH ]; then
+    file_name=${BASH_SOURCE[0]}
+elif [ -s $ZSH_NAME ]; then
+    file_name=${(%):-%x}
+fi
+script_dir=$(cd $(dirname $file_name) && pwd)
 
 . $script_dir/realpath/realpath.sh
 
