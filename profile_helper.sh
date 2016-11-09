@@ -21,7 +21,7 @@ _base16()
   [ -f $script ] && . $script
   ln -fs $script ~/.base16_theme
   export BASE16_THEME=${theme}
-  echo "colorscheme base16-$theme" > ~/.vimrc_background
+  echo "colorscheme base16-$theme" >! ~/.vimrc_background
 }
 FUNC
 for script in $script_dir/scripts/base16*.sh; do
