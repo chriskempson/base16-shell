@@ -21,7 +21,7 @@ _base16()
   [ -f $script ] && . $script
   ln -fs $script ~/.base16_theme
   export BASE16_THEME=${theme}
-  echo -e "if \0041exists('g:colors_name') || g:colors_name != 'base16-$theme'\n  colorscheme base16-$theme\nendif" > ~/.vimrc_background
+  echo -e "if \0041exists('g:colors_name') || g:colors_name != 'base16-$theme'\n  colorscheme base16-$theme\nendif" >| ~/.vimrc_background
 }
 FUNC
 for script in $script_dir/scripts/base16*.sh; do
