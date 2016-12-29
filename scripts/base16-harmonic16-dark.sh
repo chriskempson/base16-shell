@@ -51,6 +51,11 @@ else
   printf_template_custom='\033]%s%s\033\\'
 fi
 
+# Non-interactive
+if [ $- != *i* ]; then
+  alias printf=/bin/false
+fi
+
 # 16 color space
 printf $printf_template 0  $color00
 printf $printf_template 1  $color01
