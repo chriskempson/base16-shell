@@ -10,12 +10,17 @@
 #
 # TODO: maybe port to $HOME/.config/fish/functions ?
 
+
+
+set SCRIPT_DIR (realpath (dirname (status -f)))
+
 # load currently active theme...
 if test -e ~/.base16_theme
   eval sh (realpath ~/.base16_theme)
 end
 
+
 # set aliases, like base16_*...
-for script in .config/base16-shell/scripts/*.sh
-  alias ( basename $script .sh ) "eval sh $script ; ln -sf $script  ~/.base16_theme "
+for SCRIPT in $SCRIPT_DIR/scripts/*.sh
+  alias ( basename $SCRIPT .sh ) "eval sh $SCRIPT; ln -sf $SCRIPT  ~/.base16_theme "
 end for
