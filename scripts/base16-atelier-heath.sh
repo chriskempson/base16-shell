@@ -89,7 +89,9 @@ if [ -n "$ITERM_SESSION_ID" ]; then
   printf $printf_template_custom Pm 1b181b # cursor text
 else
   printf $printf_template_var 10 $color_foreground
+  if [ "$shell_no_background" != true ]; then
   printf $printf_template_var 11 $color_background
+  fi
   printf $printf_template_custom 12 ";7" # cursor (reverse video)
 fi
 
