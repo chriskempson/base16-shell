@@ -1,38 +1,38 @@
 #!/bin/sh
 # base16-shell (https://github.com/chriskempson/base16-shell)
 # Base16 Shell template by Chris Kempson (http://chriskempson.com)
-# Harmonic16 Light scheme by Jannik Siebert (https://github.com/janniks)
+# Harmonic16 Dark scheme by Jannik Siebert (https://github.com/janniks)
 
 # This script doesn't support linux console (use 'vconsole' template instead)
 if [ "${TERM%%-*}" = 'linux' ]; then
     return 2>/dev/null || exit 0
 fi
 
-color00="f7/f9/fb" # Base 00 - Black
+color00="0b/1c/2c" # Base 00 - Black
 color01="bf/8b/56" # Base 08 - Red
 color02="56/bf/8b" # Base 0B - Green
 color03="8b/bf/56" # Base 0A - Yellow
 color04="8b/56/bf" # Base 0D - Blue
 color05="bf/56/8b" # Base 0E - Magenta
 color06="56/8b/bf" # Base 0C - Cyan
-color07="40/5c/79" # Base 05 - White
-color08="aa/bc/ce" # Base 03 - Bright Black
+color07="cb/d6/e2" # Base 05 - White
+color08="62/7e/99" # Base 03 - Bright Black
 color09=$color01 # Base 08 - Bright Red
 color10=$color02 # Base 0B - Bright Green
 color11=$color03 # Base 0A - Bright Yellow
 color12=$color04 # Base 0D - Bright Blue
 color13=$color05 # Base 0E - Bright Magenta
 color14=$color06 # Base 0C - Bright Cyan
-color15="0b/1c/2c" # Base 07 - Bright White
+color15="f7/f9/fb" # Base 07 - Bright White
 color16="bf/bf/56" # Base 09
 color17="bf/56/56" # Base 0F
-color18="e5/eb/f1" # Base 01
-color19="cb/d6/e2" # Base 02
-color20="62/7e/99" # Base 04
-color21="22/3b/54" # Base 06
-color_foreground="40/5c/79" # Base 05
-color_background="f7/f9/fb" # Base 00
-color_cursor="40/5c/79" # Base 05
+color18="22/3b/54" # Base 01
+color19="40/5c/79" # Base 02
+color20="aa/bc/ce" # Base 04
+color21="e5/eb/f1" # Base 06
+color_foreground="cb/d6/e2" # Base 05
+color_background="0b/1c/2c" # Base 00
+color_cursor="cb/d6/e2" # Base 05
 
 if [ -n "$TMUX" ]; then
   # Tell tmux to pass the escape sequences through
@@ -80,16 +80,18 @@ printf $printf_template 21 $color21
 # foreground / background / cursor color
 if [ -n "$ITERM_SESSION_ID" ]; then
   # iTerm2 proprietary escape codes
-  printf $printf_template_custom Pg 405c79 # forground
-  printf $printf_template_custom Ph f7f9fb # background
-  printf $printf_template_custom Pi 405c79 # bold color
-  printf $printf_template_custom Pj cbd6e2 # selection color
-  printf $printf_template_custom Pk 405c79 # selected text color
-  printf $printf_template_custom Pl 405c79 # cursor
-  printf $printf_template_custom Pm f7f9fb # cursor text
+  printf $printf_template_custom Pg cbd6e2 # forground
+  printf $printf_template_custom Ph 0b1c2c # background
+  printf $printf_template_custom Pi cbd6e2 # bold color
+  printf $printf_template_custom Pj 405c79 # selection color
+  printf $printf_template_custom Pk cbd6e2 # selected text color
+  printf $printf_template_custom Pl cbd6e2 # cursor
+  printf $printf_template_custom Pm 0b1c2c # cursor text
 else
   printf $printf_template_var 10 $color_foreground
+  if [ "$BASE16_SHELL_SET_BACKGROUND" != false ]; then
   printf $printf_template_var 11 $color_background
+  fi
   printf $printf_template_custom 12 ";7" # cursor (reverse video)
 fi
 
