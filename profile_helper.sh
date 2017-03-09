@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 if [ -s $BASH ]; then
     file_name=${BASH_SOURCE[0]}
 elif [ -s $ZSH_NAME ]; then
