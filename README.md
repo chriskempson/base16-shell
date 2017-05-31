@@ -15,12 +15,12 @@ A shell script to change your shell's default ANSI colors but most importantly, 
 ## Shells
 
 ### Bash/ZSH
-In `~/.bashrc` or `~/.zshrc` place the following lines:
+Step 1 of 2: In `~/.bashrc` or `~/.zshrc` place the following lines:
 
     BASE16_SHELL=$HOME/.config/base16-shell/
     [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
-start a new shell and then type base16 (tab completion)
+Step 2 of 2: Start a new shell and then type base16 (tab completion)
 
 ### Base16-Vim Users
 
