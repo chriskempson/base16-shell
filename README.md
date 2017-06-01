@@ -1,4 +1,4 @@
-# Base16 Shell
+Next# Base16 Shell
 A shell script to change your shell's default ANSI colors but most importantly, colors 17 to 21 of your shell's 256 colorspace (if supported by your terminal). This script makes it possible honor the original bright colors of your shell (e.g. bright green is still green and so on) whilst providing the additional base16 colors to applications such as Vim.
 
 ![Base16 Shell](https://raw.github.com/chriskempson/base16-shell/master/base16-shell.png)
@@ -15,12 +15,12 @@ A shell script to change your shell's default ANSI colors but most importantly, 
 ## Shells
 
 ### Bash/ZSH
-In `~/.bashrc` or `~/.zshrc` place the following lines:
+Firstly, place the following lines in `~/.bashrc` or `~/.zshrc`:
 
     BASE16_SHELL=$HOME/.config/base16-shell/
     [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
-start a new shell and then type base16 (tab completion)
+Next, open a new shell and type `base16` followed by a tab to perform tab completion.
 
 ### Base16-Vim Users
 
