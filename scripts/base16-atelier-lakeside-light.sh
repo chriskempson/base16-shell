@@ -1,7 +1,7 @@
 #!/bin/sh
 # base16-shell (https://github.com/chriskempson/base16-shell)
 # Base16 Shell template by Chris Kempson (http://chriskempson.com)
-# Atelier Lakeside scheme by Bram de Haan (http://atelierbramdehaan.nl)
+# Atelier Lakeside Light scheme by Bram de Haan (http://atelierbramdehaan.nl)
 
 # This script doesn't support linux console (use 'vconsole' template instead)
 if [ "${TERM%%-*}" = 'linux' ]; then
@@ -32,7 +32,6 @@ color20="5a/7b/8c" # Base 04
 color21="1f/29/2e" # Base 06
 color_foreground="51/6d/7b" # Base 05
 color_background="eb/f8/ff" # Base 00
-color_cursor="51/6d/7b" # Base 05
 
 if [ -n "$TMUX" ]; then
   # Tell tmux to pass the escape sequences through
@@ -80,7 +79,7 @@ printf $printf_template 21 $color21
 # foreground / background / cursor color
 if [ -n "$ITERM_SESSION_ID" ]; then
   # iTerm2 proprietary escape codes
-  printf $printf_template_custom Pg 516d7b # forground
+  printf $printf_template_custom Pg 516d7b # foreground
   printf $printf_template_custom Ph ebf8ff # background
   printf $printf_template_custom Pi 516d7b # bold color
   printf $printf_template_custom Pj 7ea2b4 # selection color
@@ -125,4 +124,3 @@ unset color20
 unset color21
 unset color_foreground
 unset color_background
-unset color_cursor
