@@ -1,37 +1,37 @@
 #!/bin/sh
 # base16-shell (https://github.com/chriskempson/base16-shell)
 # Base16 Shell template by Chris Kempson (http://chriskempson.com)
-# Zenburn scheme by elnawe
+# Brush Trees scheme by Abraham White &lt;abelincoln.white@gmail.com&gt;
 
 # This script doesn't support linux console (use 'vconsole' template instead)
 if [ "${TERM%%-*}" = 'linux' ]; then
     return 2>/dev/null || exit 0
 fi
 
-color00="3f/3f/3f" # Base 00 - Black
-color01="dc/a3/a3" # Base 08 - Red
-color02="5f/7f/5f" # Base 0B - Green
-color03="e0/cf/9f" # Base 0A - Yellow
-color04="7c/b8/bb" # Base 0D - Blue
-color05="dc/8c/c3" # Base 0E - Magenta
-color06="93/e0/e3" # Base 0C - Cyan
-color07="dc/dc/cc" # Base 05 - White
-color08="4f/4f/4f" # Base 03 - Bright Black
+color00="E3/EF/EF" # Base 00 - Black
+color01="b3/86/86" # Base 08 - Red
+color02="87/b3/86" # Base 0B - Green
+color03="aa/b3/86" # Base 0A - Yellow
+color04="86/8c/b3" # Base 0D - Blue
+color05="b3/86/b2" # Base 0E - Magenta
+color06="86/b3/b3" # Base 0C - Cyan
+color07="6D/82/8E" # Base 05 - White
+color08="98/AF/B5" # Base 03 - Bright Black
 color09=$color01 # Base 08 - Bright Red
 color10=$color02 # Base 0B - Bright Green
 color11=$color03 # Base 0A - Bright Yellow
 color12=$color04 # Base 0D - Bright Blue
 color13=$color05 # Base 0E - Bright Magenta
 color14=$color06 # Base 0C - Bright Cyan
-color15="ff/ff/ff" # Base 07 - Bright White
-color16="df/af/8f" # Base 09
-color17="00/00/00" # Base 0F
-color18="40/40/40" # Base 01
-color19="60/60/60" # Base 02
-color20="80/80/80" # Base 04
-color21="c0/c0/c0" # Base 06
-color_foreground="dc/dc/cc" # Base 05
-color_background="3f/3f/3f" # Base 00
+color15="48/58/67" # Base 07 - Bright White
+color16="d8/bb/a2" # Base 09
+color17="b3/9f/9f" # Base 0F
+color18="C9/DB/DC" # Base 01
+color19="B0/C5/C8" # Base 02
+color20="82/99/A1" # Base 04
+color21="5A/6D/7A" # Base 06
+color_foreground="6D/82/8E" # Base 05
+color_background="E3/EF/EF" # Base 00
 
 if [ -n "$TMUX" ]; then
   # Tell tmux to pass the escape sequences through
@@ -79,13 +79,13 @@ printf $printf_template 21 $color21
 # foreground / background / cursor color
 if [ -n "$ITERM_SESSION_ID" ]; then
   # iTerm2 proprietary escape codes
-  printf $printf_template_custom Pg dcdccc # foreground
-  printf $printf_template_custom Ph 3f3f3f # background
-  printf $printf_template_custom Pi dcdccc # bold color
-  printf $printf_template_custom Pj 606060 # selection color
-  printf $printf_template_custom Pk dcdccc # selected text color
-  printf $printf_template_custom Pl dcdccc # cursor
-  printf $printf_template_custom Pm 3f3f3f # cursor text
+  printf $printf_template_custom Pg 6D828E # foreground
+  printf $printf_template_custom Ph E3EFEF # background
+  printf $printf_template_custom Pi 6D828E # bold color
+  printf $printf_template_custom Pj B0C5C8 # selection color
+  printf $printf_template_custom Pk 6D828E # selected text color
+  printf $printf_template_custom Pl 6D828E # cursor
+  printf $printf_template_custom Pm E3EFEF # cursor text
 else
   printf $printf_template_var 10 $color_foreground
   if [ "$BASE16_SHELL_SET_BACKGROUND" != false ]; then
