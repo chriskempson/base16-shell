@@ -22,5 +22,10 @@ end
 
 # set aliases, like base16_*...
 for SCRIPT in $SCRIPT_DIR/scripts/*.sh
-  alias ( basename $SCRIPT .sh ) "eval sh $SCRIPT; ln -sf $SCRIPT  ~/.base16_theme "
+  set THEME (basename $SCRIPT .sh)
+  function $THEME -V SCRIPT -V THEME
+    eval sh $SCRIPT
+    ln -sf $SCRIPT ~/.base16_theme
+    echo -e "if !exists('g:colors_name') || g:colors_name != '$THEME'\n  colorscheme $THEME\nendif" >  ~/.vimrc_background
+  end
 end for
