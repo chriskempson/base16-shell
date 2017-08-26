@@ -11,12 +11,11 @@
 # TODO: maybe port to $HOME/.config/fish/functions ?
 
 
-
 set SCRIPT_DIR (realpath (dirname (status -f)))
 
 # load currently active theme...
 if test -e ~/.base16_theme
-  eval sh (realpath ~/.base16_theme)
+  eval sh '"'(realpath ~/.base16_theme)'"'
 end
 
 
@@ -24,7 +23,7 @@ end
 for SCRIPT in $SCRIPT_DIR/scripts/*.sh
   set THEME (basename $SCRIPT .sh)
   function $THEME -V SCRIPT -V THEME
-    eval sh $SCRIPT
+    eval sh '"'$SCRIPT'"'
     ln -sf $SCRIPT ~/.base16_theme
     set -x BASE16_THEME $THEME
     echo -e "if !exists('g:colors_name') || g:colors_name != '$THEME'\n  colorscheme $THEME\nendif" >  ~/.vimrc_background
