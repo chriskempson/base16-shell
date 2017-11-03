@@ -22,6 +22,11 @@ _base16()
   ln -fs $script ~/.base16_theme
   export BASE16_THEME=${theme}
   echo -e "if \0041exists('g:colors_name') || g:colors_name != 'base16-$theme'\n  colorscheme base16-$theme\nendif" >| ~/.vimrc_background
+  if [ -n ${BASE16_SHELL_HOOKS:+s} ] && [ -d "${BASE16_SHELL_HOOKS}" ]; then
+    for hook in $BASE16_SHELL_HOOKS/*; do
+      [ -f "$hook" ] && [ -x "$hook" ] && "$hook"
+    done
+  fi
 }
 FUNC
 for script in $script_dir/scripts/base16*.sh; do
