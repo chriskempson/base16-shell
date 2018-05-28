@@ -1,6 +1,6 @@
 # Base16 Shell
 
-A shell script to change your shell's default ANSI colors but most importantly, colors 17 to 21 of your shell's 256 colorspace (if supported by your terminal). This script makes it possible honor the original bright colors of your shell (e.g. bright green is still green and so on) whilst providing the additional base16 colors to applications such as Vim.
+A shell script to change your shell's default ANSI colors but most importantly, colors 17 to 21 of your shell's 256 colorspace (if supported by your terminal). This script makes it possible to honor the original bright colors of your shell (e.g. bright green is still green and so on) while providing additional base16 colors to applications such as Vim.
 
 ![Base16 Shell](https://raw.github.com/chriskempson/base16-shell/master/base16-shell.png)
 
@@ -12,27 +12,49 @@ A shell script to change your shell's default ANSI colors but most importantly, 
 
 ## Installation
 
-    git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+```shell
+git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+```
 
 ## Configuration
 
 ### Bash/ZSH
 
-Firstly, place the following lines in `~/.bashrc` or `~/.zshrc`:
+Add following lines to `~/.bashrc` or `~/.zshrc`:
 
-    BASE16_SHELL=$HOME/.config/base16-shell/
-    [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+```bash
+# Base16 Shell
+[ -n "$PS1" ] && BASE16_SHELL="$HOME/.config/base16-shell/" \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
+```
 
-Next, open a new shell and type `base16` followed by a tab to perform tab completion.
+Open a new shell and type `base16` followed by a tab to perform tab completion.
 
 ### Fish
 
-In `config.fish` place the following lines:
+Add following lines to `~/.config/fish/config.fish`:
 
-    # Base16 Shell
-    if status --is-interactive
-        eval sh $HOME/.config/base16-shell/scripts/base16-default-dark.sh
-    end
+```fish
+# Base16 Shell
+if status --is-interactive
+    set BASE16_SHELL "$HOME/.config/base16-shell/"
+    source "$BASE16_SHELL/profile_helper.fish"
+end
+```
+
+Open a new shell and type `base16` followed by a tab to perform tab completion.
+
+### Base16-Vim
+
+The profile_helper will update a ~/.vimrc_background file that will have your current the colorscheme, you just need to source this file in your vimrc: i.e. (remove the base16colorspace line if not needed)
+
+```vim
+if filereadable(expand("~/.vimrc_background"))
+    let base16colorspace=256
+    source ~/.vimrc_background
+endif
+```
 
 ### Base16-Vim Users
 
