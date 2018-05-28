@@ -1,9 +1,11 @@
 # Base16 Shell
+
 A shell script to change your shell's default ANSI colors but most importantly, colors 17 to 21 of your shell's 256 colorspace (if supported by your terminal). This script makes it possible honor the original bright colors of your shell (e.g. bright green is still green and so on) whilst providing the additional base16 colors to applications such as Vim.
 
 ![Base16 Shell](https://raw.github.com/chriskempson/base16-shell/master/base16-shell.png)
 
 ## Use Cases
+
 * You want to use a `*.256.*` variant of a Terminal theme designed to honor the original bright colors.
 * You prefer to use a script instead of a terminal emulator theme to color your shell.
 * You use this script to have different colorschemes appear on different SSH sessions.
@@ -15,6 +17,7 @@ A shell script to change your shell's default ANSI colors but most importantly, 
 ## Shells
 
 ### Bash/ZSH
+
 Firstly, place the following lines in `~/.bashrc` or `~/.zshrc`:
 
     BASE16_SHELL=$HOME/.config/base16-shell/
@@ -33,6 +36,7 @@ the profile_helper will update a ~/.vimrc_background file that will have your cu
 
 
 ### Fish
+
 In `config.fish` place the following lines:
 
     # Base16 Shell
@@ -41,6 +45,7 @@ In `config.fish` place the following lines:
     end
 
 ## Troubleshooting
+
 Run the included **colortest** script and check that your colour assignments appear correct. If your teminal does not support the setting of colours in within the 256 colorspace (e.g. Apple Terminal), colours 17 to 21 will appear blue.
 
 ![setting 256 colourspace not supported](https://raw.github.com/chriskempson/base16-shell/master/setting-256-colourspace-not-supported.png)
