@@ -14,7 +14,7 @@ A shell script to change your shell's default ANSI colors but most importantly, 
 
     git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 
-## Shells
+## Configuration
 
 ### Bash/ZSH
 
@@ -25,16 +25,6 @@ Firstly, place the following lines in `~/.bashrc` or `~/.zshrc`:
 
 Next, open a new shell and type `base16` followed by a tab to perform tab completion.
 
-### Base16-Vim Users
-
-the profile_helper will update a ~/.vimrc_background file that will have your current the colorscheme, you just need to source this file in your vimrc: i.e. (remove the base16colorspace line if not needed)
-
-    if filereadable(expand("~/.vimrc_background"))
-      let base16colorspace=256
-      source ~/.vimrc_background
-    endif
-
-
 ### Fish
 
 In `config.fish` place the following lines:
@@ -43,6 +33,15 @@ In `config.fish` place the following lines:
     if status --is-interactive
         eval sh $HOME/.config/base16-shell/scripts/base16-default-dark.sh
     end
+
+### Base16-Vim Users
+
+the profile_helper will update a ~/.vimrc_background file that will have your current the colorscheme, you just need to source this file in your vimrc: i.e. (remove the base16colorspace line if not needed)
+
+    if filereadable(expand("~/.vimrc_background"))
+      let base16colorspace=256
+      source ~/.vimrc_background
+    endif
 
 ## Troubleshooting
 
