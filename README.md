@@ -46,17 +46,6 @@ end
 
 Open a new shell and type `base16` followed by a tab to perform tab completion.
 
-### Base16-Vim
-
-The profile_helper will update a ~/.vimrc_background file that will have your current the colorscheme, you just need to source this file in your vimrc: i.e. (remove the base16colorspace line if not needed)
-
-```vim
-if filereadable(expand("~/.vimrc_background"))
-    let base16colorspace=256
-    source ~/.vimrc_background
-endif
-```
-
 ### Base16-Vim Users
 
 the profile_helper will update a ~/.vimrc_background file that will have your current the colorscheme, you just need to source this file in your vimrc: i.e. (remove the base16colorspace line if not needed)
