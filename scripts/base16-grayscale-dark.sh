@@ -80,7 +80,7 @@ if [ -n "$ITERM_SESSION_ID" ]; then
   # iTerm2 proprietary escape codes
   put_template_custom Pg b9b9b9 # foreground
   put_template_custom Ph 101010 # background
-  put_template_custom Pi b9b9b9 # bold color
+  put_template_custom Pi f7f7f7 # bold color
   put_template_custom Pj 464646 # selection color
   put_template_custom Pk b9b9b9 # selected text color
   put_template_custom Pl b9b9b9 # cursor
