@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-if [ -s $BASH ]; then
+if [ -s "$BASH" ]; then
     file_name=${BASH_SOURCE[0]}
-elif [ -s $ZSH_NAME ]; then
+elif [ -s "$ZSH_NAME" ]; then
     file_name=${(%):-%x}
 fi
-script_dir=$(cd $(dirname $file_name) && pwd)
+script_dir=$(cd "$(dirname "$file_name")" && pwd)
 
-. $script_dir/realpath/realpath.sh
+. "$script_dir/realpath/realpath.sh"
 
 if [ -f ~/.base16_theme ]; then
   script_name=$(basename "$(realpath ~/.base16_theme)" .sh)
@@ -29,7 +29,7 @@ _base16()
   fi
 }
 FUNC
-for script in $script_dir/scripts/base16*.sh; do
+for script in "$script_dir"/scripts/base16*.sh; do
   script_name=${script##*/}
   script_name=${script_name%.sh}
   theme=${script_name#*-}
