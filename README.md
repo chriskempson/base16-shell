@@ -57,6 +57,8 @@ the profile_helper will update a ~/.vimrc_background file that will have your cu
       source ~/.vimrc_background
     endif
 
+Should you install `base16-vim` if you're already using `base16-shell`? While it's true that `base16-shell` will cause any terminal program (such as vim) to use the selected base16 theme, the vim-specific plugin will [apparently](https://github.com/chriskempson/base16-shell/issues/184#issuecomment-561292028) apply the theme in more of a source-code specific way. So yes, both are useful.
+
 ## Troubleshooting
 
 Run the included **colortest** script and check that your colour assignments appear correct. If your teminal does not support the setting of colours in within the 256 colorspace (e.g. Apple Terminal), colours 17 to 21 will appear blue.
