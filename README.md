@@ -27,9 +27,11 @@ Add following lines to `~/.bashrc` or `~/.zshrc`:
 ```bash
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        eval "$("$BASE16_SHELL/profile_helper.sh")"
+if [ -n "$PS1" -a -s "$BASE16_SHELL/profile_helper.sh" ]; then
+    [ ! -f "$HOME/.base16_profile" ] && \
+        "$BASE16_SHELL/profile_helper.sh" > "$HOME/.base16_profile"
+    source "$HOME/.base16_profile"
+fi
 ```
 
 Open a new shell and type `base16` followed by a tab to perform tab completion.
