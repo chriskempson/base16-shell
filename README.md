@@ -52,7 +52,8 @@ Open a new shell and type `base16` followed by a tab to perform tab completion.
 
 the BASE16_THEME environment variable will set to your current colorscheme, you just need to add the following to your vimrc: i.e. (remove the base16colorspace line if not needed)
 
-    if !exists('g:colors_name') || g:colors_name != 'base16-$BASE16_THEME'
+    if exists('$BASE16_THEME')
+          \ && (!exists('g:colors_name') || g:colors_name != 'base16-$BASE16_THEME')
         let base16colorspace=256
         colorscheme base16-$BASE16_THEME
     endif
