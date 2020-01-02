@@ -22,6 +22,11 @@ _base16()
   fi
 }
 
+if [ -n "$BASE16_DEFAULT_THEME" -a ! -f ~/.base16_theme ]; then
+  ln -s "$BASE16_SHELL/scripts/base16-$BASE16_DEFAULT_THEME.sh" \
+    "$HOME/.base16_theme"
+fi
+
 if [ -f ~/.base16_theme ]; then
   . ~/.base16_theme
 fi
@@ -33,3 +38,5 @@ for script in "$BASE16_SHELL"/scripts/base16*.sh; do
   func_name="base16_${theme}"
   alias $func_name="_base16 \"${script}\" ${theme}"
 done;
+
+alias reset="command reset && [ -f ~/.base16_theme ] && . ~/.base16_theme"
