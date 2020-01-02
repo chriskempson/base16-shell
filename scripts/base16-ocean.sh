@@ -2,6 +2,7 @@
 # base16-shell (https://github.com/chriskempson/base16-shell)
 # Base16 Shell template by Chris Kempson (http://chriskempson.com)
 # Ocean scheme by Chris Kempson (http://chriskempson.com)
+export BASE16_THEME=ocean
 
 color00="2b/30/3b" # Base 00 - Black
 color01="bf/61/6a" # Base 08 - Red
