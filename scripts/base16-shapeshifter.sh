@@ -11,20 +11,31 @@ color04="3b/48/e3" # Base 0D - Blue
 color05="f9/96/e2" # Base 0E - Magenta
 color06="23/ed/da" # Base 0C - Cyan
 color07="10/20/15" # Base 05 - White
-color08="55/55/55" # Base 03 - Bright Black
-color09=$color01 # Base 08 - Bright Red
-color10=$color02 # Base 0B - Bright Green
-color11=$color03 # Base 0A - Bright Yellow
-color12=$color04 # Base 0D - Bright Blue
-color13=$color05 # Base 0E - Bright Magenta
-color14=$color06 # Base 0C - Bright Cyan
-color15="00/00/00" # Base 07 - Bright White
-color16="e0/94/48" # Base 09
-color17="69/54/2d" # Base 0F
-color18="e0/e0/e0" # Base 01
-color19="ab/ab/ab" # Base 02
-color20="34/34/34" # Base 04
-color21="04/04/04" # Base 06
+if [ -n "$BASE16_SHELL_DEFAULT_VARIANT" ]; then
+  color08="55/55/55" # Base 03 - Bright Black
+  color09="e0/94/48" # Base 09
+  color10="e0/e0/e0" # Base 01
+  color11="ab/ab/ab" # Base 02
+  color12="34/34/34" # Base 04
+  color13="04/04/04" # Base 06
+  color14="69/54/2d" # Base 0F
+  color15="00/00/00" # Base 07 - Bright White
+else
+  color08="55/55/55" # Base 03 - Bright Black
+  color09=$color01 # Base 08 - Bright Red
+  color10=$color02 # Base 0B - Bright Green
+  color11=$color03 # Base 0A - Bright Yellow
+  color12=$color04 # Base 0D - Bright Blue
+  color13=$color05 # Base 0E - Bright Magenta
+  color14=$color06 # Base 0C - Bright Cyan
+  color15="00/00/00" # Base 07 - Bright White
+  color16="e0/94/48" # Base 09
+  color17="69/54/2d" # Base 0F
+  color18="e0/e0/e0" # Base 01
+  color19="ab/ab/ab" # Base 02
+  color20="34/34/34" # Base 04
+  color21="04/04/04" # Base 06
+fi;
 color_foreground="10/20/15" # Base 05
 color_background="f9/f9/f9" # Base 00
 
@@ -67,13 +78,15 @@ put_template 13 $color13
 put_template 14 $color14
 put_template 15 $color15
 
-# 256 color space
-put_template 16 $color16
-put_template 17 $color17
-put_template 18 $color18
-put_template 19 $color19
-put_template 20 $color20
-put_template 21 $color21
+if [ -z "$BASE16_SHELL_DEFAULT_VARIANT" ]; then
+  # 256 color space
+  put_template 16 $color16
+  put_template 17 $color17
+  put_template 18 $color18
+  put_template 19 $color19
+  put_template 20 $color20
+  put_template 21 $color21
+fi
 
 # foreground / background / cursor color
 if [ -n "$ITERM_SESSION_ID" ]; then
