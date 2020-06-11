@@ -16,7 +16,7 @@ set SCRIPT_DIR (realpath (dirname (status -f)))
 # load currently active theme...
 if test -e ~/.base16_theme
   set -l SCRIPT_NAME (basename (realpath ~/.base16_theme) .sh)
-  set -gx BASE16_THEME (string match 'base16-*' $BASE16_THEME  | string sub -s (string length 'base16-*'))
+  set -gx BASE16_THEME (string match 'base16-*' $SCRIPT_NAME  | string sub -s (string length 'base16-*'))
   eval sh '"'(realpath ~/.base16_theme)'"'
 end
 
