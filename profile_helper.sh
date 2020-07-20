@@ -8,10 +8,10 @@ script_dir=$(cd "$(dirname "$file_name")" && pwd)
 
 . "$script_dir/realpath/realpath.sh"
 
-if [ -f ~/.base16_theme ]; then
-  script_name=$(basename "$(realpath ~/.base16_theme)" .sh)
+if [ -f $XDG_CACHE_HOME/base16_theme ]; then
+  script_name=$(basename "$(realpath $XDG_CACHE_HOME/base16_theme)" .sh)
   echo "export BASE16_THEME=${script_name#*-}"
-  echo ". ~/.base16_theme"
+  echo ". $XDG_CACHE_HOME/base16_theme"
 fi
 cat <<'FUNC'
 _base16()
@@ -19,7 +19,7 @@ _base16()
   local script=$1
   local theme=$2
   [ -f $script ] && . $script
-  ln -fs $script ~/.base16_theme
+  ln -fs $script $XDG_CACHE_HOME/base16_theme
   export BASE16_THEME=${theme}
   echo -e "if \0041exists('g:colors_name') || g:colors_name != 'base16-$theme'\n  colorscheme base16-$theme\nendif" >| ~/.vimrc_background
   if [ -n ${BASE16_SHELL_HOOKS:+s} ] && [ -d "${BASE16_SHELL_HOOKS}" ]; then
