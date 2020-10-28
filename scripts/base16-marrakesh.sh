@@ -3,30 +3,30 @@
 # Base16 Shell template by Chris Kempson (http://chriskempson.com)
 # Marrakesh scheme by Alexandre Gavioli (http://github.com/Alexx2/)
 
-base16_color00="20/16/02" # Base 00 - Black
-base16_color01="c3/53/59" # Base 08 - Red
-base16_color02="18/97/4e" # Base 0B - Green
-base16_color03="a8/83/39" # Base 0A - Yellow
-base16_color04="47/7c/a1" # Base 0D - Blue
-base16_color05="88/68/b3" # Base 0E - Magenta
-base16_color06="75/a7/38" # Base 0C - Cyan
-base16_color07="94/8e/48" # Base 05 - White
-base16_color08="6c/68/23" # Base 03 - Bright Black
-base16_color09=$base16_color01 # Base 08 - Bright Red
-base16_color10=$base16_color02 # Base 0B - Bright Green
-base16_color11=$base16_color03 # Base 0A - Bright Yellow
-base16_color12=$base16_color04 # Base 0D - Bright Blue
-base16_color13=$base16_color05 # Base 0E - Bright Magenta
-base16_color14=$base16_color06 # Base 0C - Bright Cyan
-base16_color15="fa/f0/a5" # Base 07 - Bright White
-base16_color16="b3/61/44" # Base 09
-base16_color17="b3/58/8e" # Base 0F
-base16_color18="30/2e/00" # Base 01
-base16_color19="5f/5b/17" # Base 02
-base16_color20="86/81/3b" # Base 04
-base16_color21="cc/c3/7a" # Base 06
-base16_color_foreground="94/8e/48" # Base 05
-base16_color_background="20/16/02" # Base 00
+export base16_color00="20/16/02" # Base 00 - Black
+export base16_color01="c3/53/59" # Base 08 - Red
+export base16_color02="18/97/4e" # Base 0B - Green
+export base16_color03="a8/83/39" # Base 0A - Yellow
+export base16_color04="47/7c/a1" # Base 0D - Blue
+export base16_color05="88/68/b3" # Base 0E - Magenta
+export base16_color06="75/a7/38" # Base 0C - Cyan
+export base16_color07="94/8e/48" # Base 05 - White
+export base16_color08="6c/68/23" # Base 03 - Bright Black
+export base16_color09=$base16_color01 # Base 08 - Bright Red
+export base16_color10=$base16_color02 # Base 0B - Bright Green
+export base16_color11=$base16_color03 # Base 0A - Bright Yellow
+export base16_color12=$base16_color04 # Base 0D - Bright Blue
+export base16_color13=$base16_color05 # Base 0E - Bright Magenta
+export base16_color14=$base16_color06 # Base 0C - Bright Cyan
+export base16_color15="fa/f0/a5" # Base 07 - Bright White
+export base16_color16="b3/61/44" # Base 09
+export base16_color17="b3/58/8e" # Base 0F
+export base16_color18="30/2e/00" # Base 01
+export base16_color19="5f/5b/17" # Base 02
+export base16_color20="86/81/3b" # Base 04
+export base16_color21="cc/c3/7a" # Base 06
+export base16_color_foreground="94/8e/48" # Base 05
+export base16_color_background="20/16/02" # Base 00
 
 if [ -n "$TMUX" ]; then
   # Tell tmux to pass the escape sequences through
@@ -100,27 +100,3 @@ fi
 unset -f put_template
 unset -f put_template_var
 unset -f put_template_custom
-unset base16_color00
-unset base16_color01
-unset base16_color02
-unset base16_color03
-unset base16_color04
-unset base16_color05
-unset base16_color06
-unset base16_color07
-unset base16_color08
-unset base16_color09
-unset base16_color10
-unset base16_color11
-unset base16_color12
-unset base16_color13
-unset base16_color14
-unset base16_color15
-unset base16_color16
-unset base16_color17
-unset base16_color18
-unset base16_color19
-unset base16_color20
-unset base16_color21
-unset base16_color_foreground
-unset base16_color_background
