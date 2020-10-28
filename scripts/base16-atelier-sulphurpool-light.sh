@@ -3,30 +3,30 @@
 # Base16 Shell template by Chris Kempson (http://chriskempson.com)
 # Atelier Sulphurpool Light scheme by Bram de Haan (http://atelierbramdehaan.nl)
 
-color00="f5/f7/ff" # Base 00 - Black
-color01="c9/49/22" # Base 08 - Red
-color02="ac/97/39" # Base 0B - Green
-color03="c0/8b/30" # Base 0A - Yellow
-color04="3d/8f/d1" # Base 0D - Blue
-color05="66/79/cc" # Base 0E - Magenta
-color06="22/a2/c9" # Base 0C - Cyan
-color07="5e/66/87" # Base 05 - White
-color08="89/8e/a4" # Base 03 - Bright Black
-color09=$color01 # Base 08 - Bright Red
-color10=$color02 # Base 0B - Bright Green
-color11=$color03 # Base 0A - Bright Yellow
-color12=$color04 # Base 0D - Bright Blue
-color13=$color05 # Base 0E - Bright Magenta
-color14=$color06 # Base 0C - Bright Cyan
-color15="20/27/46" # Base 07 - Bright White
-color16="c7/6b/29" # Base 09
-color17="9c/63/7a" # Base 0F
-color18="df/e2/f1" # Base 01
-color19="97/9d/b4" # Base 02
-color20="6b/73/94" # Base 04
-color21="29/32/56" # Base 06
-color_foreground="5e/66/87" # Base 05
-color_background="f5/f7/ff" # Base 00
+base16_color00="f5/f7/ff" # Base 00 - Black
+base16_color01="c9/49/22" # Base 08 - Red
+base16_color02="ac/97/39" # Base 0B - Green
+base16_color03="c0/8b/30" # Base 0A - Yellow
+base16_color04="3d/8f/d1" # Base 0D - Blue
+base16_color05="66/79/cc" # Base 0E - Magenta
+base16_color06="22/a2/c9" # Base 0C - Cyan
+base16_color07="5e/66/87" # Base 05 - White
+base16_color08="89/8e/a4" # Base 03 - Bright Black
+base16_color09=$base16_color01 # Base 08 - Bright Red
+base16_color10=$base16_color02 # Base 0B - Bright Green
+base16_color11=$base16_color03 # Base 0A - Bright Yellow
+base16_color12=$base16_color04 # Base 0D - Bright Blue
+base16_color13=$base16_color05 # Base 0E - Bright Magenta
+base16_color14=$base16_color06 # Base 0C - Bright Cyan
+base16_color15="20/27/46" # Base 07 - Bright White
+base16_color16="c7/6b/29" # Base 09
+base16_color17="9c/63/7a" # Base 0F
+base16_color18="df/e2/f1" # Base 01
+base16_color19="97/9d/b4" # Base 02
+base16_color20="6b/73/94" # Base 04
+base16_color21="29/32/56" # Base 06
+base16_color_foreground="5e/66/87" # Base 05
+base16_color_background="f5/f7/ff" # Base 00
 
 if [ -n "$TMUX" ]; then
   # Tell tmux to pass the escape sequences through
@@ -50,30 +50,30 @@ else
 fi
 
 # 16 color space
-put_template 0  $color00
-put_template 1  $color01
-put_template 2  $color02
-put_template 3  $color03
-put_template 4  $color04
-put_template 5  $color05
-put_template 6  $color06
-put_template 7  $color07
-put_template 8  $color08
-put_template 9  $color09
-put_template 10 $color10
-put_template 11 $color11
-put_template 12 $color12
-put_template 13 $color13
-put_template 14 $color14
-put_template 15 $color15
+put_template 0  $base16_color00
+put_template 1  $base16_color01
+put_template 2  $base16_color02
+put_template 3  $base16_color03
+put_template 4  $base16_color04
+put_template 5  $base16_color05
+put_template 6  $base16_color06
+put_template 7  $base16_color07
+put_template 8  $base16_color08
+put_template 9  $base16_color09
+put_template 10 $base16_color10
+put_template 11 $base16_color11
+put_template 12 $base16_color12
+put_template 13 $base16_color13
+put_template 14 $base16_color14
+put_template 15 $base16_color15
 
 # 256 color space
-put_template 16 $color16
-put_template 17 $color17
-put_template 18 $color18
-put_template 19 $color19
-put_template 20 $color20
-put_template 21 $color21
+put_template 16 $base16_color16
+put_template 17 $base16_color17
+put_template 18 $base16_color18
+put_template 19 $base16_color19
+put_template 20 $base16_color20
+put_template 21 $base16_color21
 
 # foreground / background / cursor color
 if [ -n "$ITERM_SESSION_ID" ]; then
@@ -86,11 +86,11 @@ if [ -n "$ITERM_SESSION_ID" ]; then
   put_template_custom Pl 5e6687 # cursor
   put_template_custom Pm f5f7ff # cursor text
 else
-  put_template_var 10 $color_foreground
+  put_template_var 10 $base16_color_foreground
   if [ "$BASE16_SHELL_SET_BACKGROUND" != false ]; then
-    put_template_var 11 $color_background
+    put_template_var 11 $base16_color_background
     if [ "${TERM%%-*}" = "rxvt" ]; then
-      put_template_var 708 $color_background # internal border (rxvt)
+      put_template_var 708 $base16_color_background # internal border (rxvt)
     fi
   fi
   put_template_custom 12 ";7" # cursor (reverse video)
@@ -100,27 +100,27 @@ fi
 unset -f put_template
 unset -f put_template_var
 unset -f put_template_custom
-unset color00
-unset color01
-unset color02
-unset color03
-unset color04
-unset color05
-unset color06
-unset color07
-unset color08
-unset color09
-unset color10
-unset color11
-unset color12
-unset color13
-unset color14
-unset color15
-unset color16
-unset color17
-unset color18
-unset color19
-unset color20
-unset color21
-unset color_foreground
-unset color_background
+unset base16_color00
+unset base16_color01
+unset base16_color02
+unset base16_color03
+unset base16_color04
+unset base16_color05
+unset base16_color06
+unset base16_color07
+unset base16_color08
+unset base16_color09
+unset base16_color10
+unset base16_color11
+unset base16_color12
+unset base16_color13
+unset base16_color14
+unset base16_color15
+unset base16_color16
+unset base16_color17
+unset base16_color18
+unset base16_color19
+unset base16_color20
+unset base16_color21
+unset base16_color_foreground
+unset base16_color_background
