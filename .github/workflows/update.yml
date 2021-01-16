@@ -1,0 +1,25 @@
+name: Update the repository with the latest base16 colorschemes
+on:
+  schedule:
+    - cron: "0 0 * * 0" # https://crontab.guru/every-week
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
+      - name: Install pybase16
+        run: pip install pybase16-builder
+      - name: Fetch the repository code
+        uses: actions/checkout@v2
+      - name: Run make
+        run: make
+      - name: Commit the changes, if any
+        uses: stefanzweifel/git-auto-commit-action@v4.1.1
+        with:
+          commit_message: Update repository with the latest base16 colorschemes
+          branch: ${{ github.head_ref }}
