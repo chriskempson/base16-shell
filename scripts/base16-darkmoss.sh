@@ -1,32 +1,32 @@
 #!/bin/sh
 # base16-shell (https://github.com/chriskempson/base16-shell)
 # Base16 Shell template by Chris Kempson (http://chriskempson.com)
-# PaperColor Light scheme by Jon Leopard (http://github.com/jonleopard) based on PaperColor Theme (https://github.com/NLKNguyen/papercolor-theme)
+# darkmoss scheme by Gabriel Avanzi (https://github.com/avanzzzi)
 
-color00="ee/ee/ee" # Base 00 - Black
-color01="bc/bc/bc" # Base 08 - Red
-color02="87/00/af" # Base 0B - Green
-color03="d7/00/87" # Base 0A - Yellow
-color04="d7/5f/00" # Base 0D - Blue
-color05="00/5f/af" # Base 0E - Magenta
-color06="d7/5f/00" # Base 0C - Cyan
-color07="44/44/44" # Base 05 - White
-color08="5f/87/00" # Base 03 - Bright Black
+color00="17/1e/1f" # Base 00 - Black
+color01="ff/46/58" # Base 08 - Red
+color02="49/91/80" # Base 0B - Green
+color03="fd/b1/1f" # Base 0A - Yellow
+color04="49/80/91" # Base 0D - Blue
+color05="9b/c0/c8" # Base 0E - Magenta
+color06="66/d9/ef" # Base 0C - Cyan
+color07="c7/c7/a5" # Base 05 - White
+color08="55/5e/5f" # Base 03 - Bright Black
 color09=$color01 # Base 08 - Bright Red
 color10=$color02 # Base 0B - Bright Green
 color11=$color03 # Base 0A - Bright Yellow
 color12=$color04 # Base 0D - Bright Blue
 color13=$color05 # Base 0E - Bright Magenta
 color14=$color06 # Base 0C - Bright Cyan
-color15="87/87/87" # Base 07 - Bright White
-color16="d7/00/00" # Base 09
-color17="00/5f/87" # Base 0F
-color18="af/00/00" # Base 01
-color19="00/87/00" # Base 02
-color20="00/87/af" # Base 04
-color21="00/5f/87" # Base 06
-color_foreground="44/44/44" # Base 05
-color_background="ee/ee/ee" # Base 00
+color15="e1/ea/ef" # Base 07 - Bright White
+color16="e6/db/74" # Base 09
+color17="d2/7b/53" # Base 0F
+color18="25/2c/2d" # Base 01
+color19="37/3c/3d" # Base 02
+color20="81/8f/80" # Base 04
+color21="e3/e3/c8" # Base 06
+color_foreground="c7/c7/a5" # Base 05
+color_background="17/1e/1f" # Base 00
 
 if [ -n "$TMUX" ]; then
   # Tell tmux to pass the escape sequences through
@@ -78,13 +78,13 @@ put_template 21 $color21
 # foreground / background / cursor color
 if [ -n "$ITERM_SESSION_ID" ]; then
   # iTerm2 proprietary escape codes
-  put_template_custom Pg 444444 # foreground
-  put_template_custom Ph eeeeee # background
-  put_template_custom Pi 444444 # bold color
-  put_template_custom Pj 008700 # selection color
-  put_template_custom Pk 444444 # selected text color
-  put_template_custom Pl 444444 # cursor
-  put_template_custom Pm eeeeee # cursor text
+  put_template_custom Pg c7c7a5 # foreground
+  put_template_custom Ph 171e1f # background
+  put_template_custom Pi c7c7a5 # bold color
+  put_template_custom Pj 373c3d # selection color
+  put_template_custom Pk c7c7a5 # selected text color
+  put_template_custom Pl c7c7a5 # cursor
+  put_template_custom Pm 171e1f # cursor text
 else
   put_template_var 10 $color_foreground
   if [ "$BASE16_SHELL_SET_BACKGROUND" != false ]; then
