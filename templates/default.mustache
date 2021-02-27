@@ -78,13 +78,13 @@ put_template 21 $color21
 # foreground / background / cursor color
 if [ -n "$ITERM_SESSION_ID" ]; then
   # iTerm2 proprietary escape codes
-  put_template_custom Pg ${color07////} # foreground
-  put_template_custom Ph ${color00////} # background
-  put_template_custom Pi ${color07////} # bold color
-  put_template_custom Pj ${color19////} # selection color
-  put_template_custom Pk ${color07////} # selected text color
-  put_template_custom Pl ${color07////} # cursor
-  put_template_custom Pm ${color00////} # cursor text
+  put_template_custom Pg $(sed -e 's#/##g' <<<$color07) # foreground
+  put_template_custom Ph $(sed -e 's#/##g' <<<$color00) # background
+  put_template_custom Pi $(sed -e 's#/##g' <<<$color07) # bold color
+  put_template_custom Pj $(sed -e 's#/##g' <<<$color19) # selection color
+  put_template_custom Pk $(sed -e 's#/##g' <<<$color07) # selected text color
+  put_template_custom Pl $(sed -e 's#/##g' <<<$color07) # cursor
+  put_template_custom Pm $(sed -e 's#/##g' <<<$color00) # cursor text
 else
   put_template_var 10 $color_foreground
   if [ "$BASE16_SHELL_SET_BACKGROUND" != false ]; then
