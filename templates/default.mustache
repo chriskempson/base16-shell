@@ -25,8 +25,8 @@ color18="{{base01-hex-r}}/{{base01-hex-g}}/{{base01-hex-b}}" # Base 01
 color19="{{base02-hex-r}}/{{base02-hex-g}}/{{base02-hex-b}}" # Base 02
 color20="{{base04-hex-r}}/{{base04-hex-g}}/{{base04-hex-b}}" # Base 04
 color21="{{base06-hex-r}}/{{base06-hex-g}}/{{base06-hex-b}}" # Base 06
-color_foreground="{{base05-hex-r}}/{{base05-hex-g}}/{{base05-hex-b}}" # Base 05
-color_background="{{base00-hex-r}}/{{base00-hex-g}}/{{base00-hex-b}}" # Base 00
+color_foreground=$color07 # Base 05
+color_background=$color00 # Base 00
 
 if [ -n "$TMUX" ]; then
   # Tell tmux to pass the escape sequences through
@@ -78,13 +78,13 @@ put_template 21 $color21
 # foreground / background / cursor color
 if [ -n "$ITERM_SESSION_ID" ]; then
   # iTerm2 proprietary escape codes
-  put_template_custom Pg {{base05-hex}} # foreground
-  put_template_custom Ph {{base00-hex}} # background
-  put_template_custom Pi {{base05-hex}} # bold color
-  put_template_custom Pj {{base02-hex}} # selection color
-  put_template_custom Pk {{base05-hex}} # selected text color
-  put_template_custom Pl {{base05-hex}} # cursor
-  put_template_custom Pm {{base00-hex}} # cursor text
+  put_template_custom Pg ${color07////} # foreground
+  put_template_custom Ph ${color00////} # background
+  put_template_custom Pi ${color07////} # bold color
+  put_template_custom Pj ${color19////} # selection color
+  put_template_custom Pk ${color07////} # selected text color
+  put_template_custom Pl ${color07////} # cursor
+  put_template_custom Pm ${color00////} # cursor text
 else
   put_template_var 10 $color_foreground
   if [ "$BASE16_SHELL_SET_BACKGROUND" != false ]; then
