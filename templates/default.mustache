@@ -78,13 +78,15 @@ put_template 21 $color21
 # foreground / background / cursor color
 if [ -n "$ITERM_SESSION_ID" ]; then
   # iTerm2 proprietary escape codes
-  put_template_custom Pg $(sed -e 's#/##g' <<<$color07) # foreground
-  put_template_custom Ph $(sed -e 's#/##g' <<<$color00) # background
-  put_template_custom Pi $(sed -e 's#/##g' <<<$color07) # bold color
-  put_template_custom Pj $(sed -e 's#/##g' <<<$color19) # selection color
-  put_template_custom Pk $(sed -e 's#/##g' <<<$color07) # selected text color
-  put_template_custom Pl $(sed -e 's#/##g' <<<$color07) # cursor
-  put_template_custom Pm $(sed -e 's#/##g' <<<$color00) # cursor text
+  _IFS=$IFS; ${IFS+':'} unset _IFS
+  IFS=-; set -- $color07; set -- ${1}; IFS=$_IFS; put_template_custom Pg ${1}-hex}} # foreground
+  IFS=-; set -- $color00; set -- ${1}; IFS=$_IFS; put_template_custom Ph ${1}-hex}} # background
+  IFS=-; set -- $color07; set -- ${1}; IFS=$_IFS; put_template_custom Pi ${1}-hex}} # bold color
+  IFS=-; set -- $color19; set -- ${1}; IFS=$_IFS; put_template_custom Pj ${1}-hex}} # selection color
+  IFS=-; set -- $color07; set -- ${1}; IFS=$_IFS; put_template_custom Pk ${1}-hex}} # selected text color
+  IFS=-; set -- $color07; set -- ${1}; IFS=$_IFS; put_template_custom Pl ${1}-hex}} # cursor
+  IFS=-; set -- $color00; set -- ${1}; IFS=$_IFS; put_template_custom Pm ${1}-hex}} # cursor text
+  ${_IFS+':'} unset IFS
 else
   put_template_var 10 $color_foreground
   if [ "$BASE16_SHELL_SET_BACKGROUND" != false ]; then
@@ -100,6 +102,7 @@ fi
 unset -f put_template
 unset -f put_template_var
 unset -f put_template_custom
+unset _IFS
 unset color00
 unset color01
 unset color02
