@@ -4,7 +4,7 @@ These scripts were built with [Base16 Builder PHP](https://github.com/chriskemps
 
 A shell script to change your shell's default ANSI colors but most importantly, colors 17 to 21 of your shell's 256 colorspace (if supported by your terminal). This script makes it possible to honor the original bright colors of your shell (e.g. bright green is still green and so on) while providing additional base16 colors to applications such as Vim.
 
-![Base16 Shell](https://raw.github.com/chriskempson/base16-shell/master/base16-shell.png)
+![Base16 Shell](base16-shell.png)
 
 ## Use Cases
 
@@ -61,7 +61,7 @@ the profile_helper will update a ~/.vimrc_background file that will have your cu
 
 Run the included **colortest** script and check that your colour assignments appear correct. If your teminal does not support the setting of colours in within the 256 colorspace (e.g. Apple Terminal), colours 17 to 21 will appear blue.
 
-![setting 256 colourspace not supported](https://raw.github.com/chriskempson/base16-shell/master/setting-256-colourspace-not-supported.png)
+![setting 256 colourspace not supported](setting-256-colourspace-not-supported.png)
 
 If **colortest** is run without any arguments e.g. `./colortest` the hex values shown will correspond to the default scheme. If you'd like to see the hex values for a particular scheme pass the file name of the theme as the arguement e.g. `./colortest base16-ocean.sh`.
 
