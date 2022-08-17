@@ -57,6 +57,15 @@ the profile_helper will update a ~/.vimrc_background file that will have your cu
       source ~/.vimrc_background
     endif
 
+### tmux users
+
+Add the following line to `~/.tmux.config` to passthrough color escape sequences.
+(As of version 3.3 the passthrough of escape sequences is turned off by default)
+
+```tmux
+set -g allow-passthrough 1
+```
+
 ## Troubleshooting
 
 Run the included **colortest** script and check that your colour assignments appear correct. If your teminal does not support the setting of colours in within the 256 colorspace (e.g. Apple Terminal), colours 17 to 21 will appear blue.
