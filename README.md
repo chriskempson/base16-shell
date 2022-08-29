@@ -1,6 +1,7 @@
 # Base16 Shell
-See the [Base16 repository](https://github.com/chriskempson/base16) for more information.  
-These scripts were built with [Base16 Builder PHP](https://github.com/chriskempson/base16-builder-php).
+
+See the [Base16 repository](https://github.com/chriskempson/base16) for more information.
+These scripts were built with [base16-builder-python](https://github.com/InspectorMustache/base16-builder-python).
 
 A shell script to change your shell's default ANSI colors but most importantly, colors 17 to 21 of your shell's 256 colorspace (if supported by your terminal). This script makes it possible to honor the original bright colors of your shell (e.g. bright green is still green and so on) while providing additional base16 colors to applications such as Vim.
 
@@ -8,9 +9,9 @@ A shell script to change your shell's default ANSI colors but most importantly, 
 
 ## Use Cases
 
-* You want to use a `*.256.*` variant of a Terminal theme designed to honor the original bright colors.
-* You prefer to use a script instead of a terminal emulator theme to color your shell.
-* You use this script to have different colorschemes appear on different SSH sessions.
+- You want to use a `*.256.*` variant of a Terminal theme designed to honor the original bright colors.
+- You prefer to use a script instead of a terminal emulator theme to color your shell.
+- You use this script to have different colorschemes appear on different SSH sessions.
 
 ## Installation
 
@@ -78,3 +79,24 @@ If **colortest** is run without any arguments e.g. `./colortest` the hex values 
 
 This is the expected behaviour when using a light theme:
 https://github.com/chriskempson/base16-shell/issues/150
+
+## Building
+
+Dependencies:
+
+- Python, at least version 3.5
+- The `pybase16` command from [base16-builder-python](https://github.com/InspectorMustache/base16-builder-python)
+- The `make` command
+
+```
+# Install dependencies (you probably already have pip/pip3 and make)
+apt install build-essential # for make
+pip3 install pybase16-builder
+
+# Build the packages
+make
+```
+
+### Keeping your themes up to date
+
+To update, just `git pull` wherever you've cloned `base16-shell`. The themes are updated on a weekly basis thanks to GitHub Actions. See the GitHub Actions workflow in [`.github/workflows/update.yml`](.github/workflows/update.yml).
