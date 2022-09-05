@@ -20,6 +20,11 @@ git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shel
 
 ## Configuration
 
+We're going to use the example theme of `base16_default` for the following instructions.
+Replace with your desired theme.
+
+Once you have got base16 setup you can try applying themes in your shell by typing `base16_`, letting autocomplete show you the options, then executing the theme you want to try.
+
 ### Bash/ZSH
 
 Add following lines to `~/.bashrc` or `~/.zshrc`:
@@ -29,10 +34,24 @@ Add following lines to `~/.bashrc` or `~/.zshrc`:
 BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        source "$BASE16_SHELL/profile_helper.sh"
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
+        
+base16_default
 ```
 
-Open a new shell and type `base16` followed by a tab to perform tab completion.
+#### If you're using ZSH + plug
+
+You won't need to do the `git clone` above.
+Add the below commands to your `~/.zshrc` instead.
+(This will likely work for other plugin managers too).
+
+```
+# before `zplug load`
+zplug chriskempson/base16-shell, from:github
+
+# after `zplug load`
+base16_materia
+```
 
 ### Fish
 
@@ -44,9 +63,9 @@ if status --is-interactive
     set BASE16_SHELL "$HOME/.config/base16-shell/"
     source "$BASE16_SHELL/profile_helper.fish"
 end
-```
 
-Open a new shell and type `base16` followed by a tab to perform tab completion.
+base16_materia
+```
 
 ### Base16-Vim Users
 
