@@ -1,38 +1,42 @@
 #!/usr/bin/env bash
-if [ -s "$BASH" ]; then
-    file_name=${BASH_SOURCE[0]}
-elif [ -s "$ZSH_NAME" ]; then
-    file_name=${(%):-%x}
-fi
-script_dir=$(cd "$(dirname "$file_name")" && pwd)
 
-. "$script_dir/realpath/realpath.sh"
-
-if [ -f ~/.base16_theme ]; then
-  script_name=$(basename "$(realpath ~/.base16_theme)" .sh)
-  echo "export BASE16_THEME=${script_name#*-}"
-  echo ". ~/.base16_theme"
+if [ -z "$BASE16_SHELL" ]; then
+  if [ -n "$BASH" ]; then
+    BASE16_SHELL=${BASH_SOURCE[0]}
+  elif [ -n "$ZSH_NAME" ]; then
+    BASE16_SHELL=${(%):-%x}
+  fi
+  BASE16_SHELL=${BASE16_SHELL%/*}
 fi
-cat <<'FUNC'
+
 _base16()
 {
   local script=$1
   local theme=$2
   [ -f $script ] && . $script
   ln -fs $script ~/.base16_theme
-  export BASE16_THEME=${theme}
-  echo -e "if \0041exists('g:colors_name') || g:colors_name != 'base16-$theme'\n  colorscheme base16-$theme\nendif" >| ~/.vimrc_background
   if [ -n ${BASE16_SHELL_HOOKS:+s} ] && [ -d "${BASE16_SHELL_HOOKS}" ]; then
     for hook in $BASE16_SHELL_HOOKS/*; do
       [ -f "$hook" ] && [ -x "$hook" ] && "$hook"
     done
   fi
 }
-FUNC
-for script in "$script_dir"/scripts/base16*.sh; do
+
+if [ -n "$BASE16_DEFAULT_THEME" -a ! -f ~/.base16_theme ]; then
+  ln -s "$BASE16_SHELL/scripts/base16-$BASE16_DEFAULT_THEME.sh" \
+    "$HOME/.base16_theme"
+fi
+
+if [ -f ~/.base16_theme ]; then
+  . ~/.base16_theme
+fi
+
+for script in "$BASE16_SHELL"/scripts/base16*.sh; do
   script_name=${script##*/}
   script_name=${script_name%.sh}
   theme=${script_name#*-}
   func_name="base16_${theme}"
-  echo "alias $func_name=\"_base16 \\\"$script\\\" $theme\""
+  alias $func_name="_base16 \"${script}\" ${theme}"
 done;
+
+alias reset="command reset && [ -f ~/.base16_theme ] && . ~/.base16_theme"
