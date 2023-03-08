@@ -79,7 +79,7 @@ the BASE16_THEME environment variable will set to your current colorscheme, you 
 
 ### tmux users
 
-Add the following line to `~/.tmux.config` to passthrough color escape sequences.
+Add the following line to `~/.tmux.conf` to passthrough color escape sequences.
 (As of version 3.3 the passthrough of escape sequences is turned off by default)
 
 ```tmux
